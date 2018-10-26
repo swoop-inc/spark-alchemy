@@ -1,0 +1,62 @@
+language: scala
+
+sudo: false
+
+scala: 2.11.8
+
+addons:
+  apt:
+    packages:
+    - curl
+
+branches:
+  except:
+    - gh-pages
+    - /^v[0-9]/
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+env:
+  global:
+    - secure: "dhDQWvkfLqVrcAOH1u8PRxTLM0B+DteVDe1X0zfMWE3Rfmoa7ZNsegvPDePWTyAEEnCDK+27buOSurWxt1wcOtu+7zwnPB5ZB5JPIIJItAtlipWY0o+tiZ046cysn9p9BY3eK5Up9LqaXkPCnvjF19tbHKVKTmTSrd/NGwin/FCdXoLebnG8YU5/+B6hAal92I5gVtKGsbvo6/q4V/8pOkZKjtIUPQg9wHANbefu5eR83CKINkOShUILtSKqzbF79LGttLN4bOCUr+/P54xpJ4GCfnGc6UEBZcQ3HKYjk8KLDnMr0r3oy8yr/RdJbq9MttCxJdbHjlu1Jak068DzUBZIH5QMTLJZdx61aGTmEuNVvItVXFVWOjIUz6vVgLAaKgA5BWe8fIMl5DSbCCs2rUAiaGwq8zuhzDsOeu1wrCKOqUxYrzzq8WFLiGDtD9RmomdXWqVqbw39/Jk4dRPSRJrtsIGGGxCfLV/gPbeAdNDwS+GWSMBEBQe+2f7cSpZcp7vCJ5j5bnTA/0HEqD1tMp1/C1cQ9I3X8HRwc5ivOW1CCOqJlOxBvmns4rjWBIEcRBVN9HbAR3nQQUwJ97q5T45tC9+L2MIlQjuKiYA6VIHweOnO25FMm2I+hAmWnWcHBt0s3IMx3S1yyZcMc7BJLRGsSBytjzb1gL+QhzdvtK0="
+    - secure: "qddU9PPHqKQbMc/+pbX8h9Sy1hR2bjyvyY2isFOsemxi3XMhuPrV15yVju+SGTZklGhPITzbF/zgvVu5hvE5zcCKge/+ODVmcB+lQQNv1/2m2poP7CvT/Qvj1v4BvN6QXVF4/ZA+y/DEoCxV4h8r0uhw8slBj7PkFvGFALPDiaVwoqyiwExPhQJZX/O7UFipdTHCYk38mak3Q1JU5Vq9swBCrTZihWb1hmkyV+Gppa02loxaS/e5JS8UKc0I+kBbTCr8k+yzE9Pi4FqTO3HFYxuhegaDtrWS9gmtBZZXPViS1RtEemtzECUW0tG4xTuPw0EqaCM1Q9Qv4oRb1mtWLqdLytN1OaTW1ZqGlHBUuLZ3HBGsBQoe2NqOt4+g8+LfuDSkrtFGo7MzyikgAE797QkJtJXUNuqcfE5R1IIPpjxHkKlA5u77y2inSPxuA3iCGskbXy/YCWB8gZriKZKPrSXhpLZl9cpH70F4QTuBXDhkqPOVMwP6B7crGhFIzz1+CSWtxoJlERxZ7E2bYmWqySzw8BwvpuWk3ysrPEAAD5/gaWwohESlFgyAdRaexEqqQQG3/JagtxBInErLqcq3PUxp6U7mV63zgPjksmqQNgLaI3wBCMxdBJhl6Ejkaa+pBv+B40BPNczUSZW0vjtO7EDq1jSAhMLZhILQptFKZvE="
+    - secure: "LrhD2u0lM+ZRJ6TvtP2BX3FlQbNf6iRGZ4uTGEGRkylIEAfk1BtRs2Kv9KhjVhlox630vzfSNZxf76yH252JMsqSQJI+3raJThF7tAfLDUK2tdIw8OdHpn940wI01ChpH+3uqKwBIYSLhyU8ryPSCHLeehQeayAvz8ClDgjMhw1OJLA62l26x9nJYEDyOetWtrlqG0N39Lg4Mb722X+jLMmYNOLZRVFb7CjLSaacQ4sRENA1PCQdA87qG/1/wnkJptF/TSXwbdfxr86qVv6n7gqJVqEDjeNABZ4GouX4c3SlJqAZqm26POBysvT7eO6okBOitsoIMM8WEO32tT8PVTRXY17NFnswCVJdarsZFCEv93f7KrRERTtCbHJRuV20LdLMCs9S7NVBnvudcYFT9tcq3dUprON4+9nMd4bGVdKZOuhwY2Xw9P3xur5//pKB9VKsa4Fx6kX7OYbA/dQcTEW2fuXUyQrVbcdfBuM/nkYeJYrya4wsrnzJzW7SqFszcohhJAjM3pklMxE8mlE+pK4N+th/0cxJoQfPyyCde9NEKKpjKZaQhbiuNNXsJCQjyuoLWDSGA/Yh/emJdYWQrjY+sLNRmCOQ4kjuNsVPnatuYUH7TQtX4V2HTmxgdApc0zsMpBGNk+inNvK6xIfTU8saiA5wwC4dZEdmnD7hZ2g="
+    - SWOOP_VERSION_FILE=$TRAVIS_BUILD_DIR/VERSION
+    - SWOOP_RELEASE_BRANCH=release
+    - SWOOP_PROJECT_VERSION="$(grep -Po '\d+\.\d+' $SWOOP_VERSION_FILE).$TRAVIS_BUILD_NUMBER"
+
+before_install:
+  - >
+    if [ ${TRAVIS_PULL_REQUEST} = 'false' -a ${TRAVIS_BRANCH} = ${SWOOP_RELEASE_BRANCH} ]; then
+      bash ./.decrypt-keys.sh &&
+      export PATH=${PATH}:./vendor/bundle &&
+      gem update --system &&
+      gem install sass &&
+      gem install jekyll
+    fi
+
+# Set the version number with the Travis build number as the patch version
+before_script:
+  - >
+    if [ ${TRAVIS_PULL_REQUEST} = 'false' -a ${TRAVIS_BRANCH} = ${SWOOP_RELEASE_BRANCH} ]
+      then echo "${SWOOP_PROJECT_VERSION}" | tee $SWOOP_VERSION_FILE
+      else echo "${SWOOP_PROJECT_VERSION}-SNAPSHOT" | tee $SWOOP_VERSION_FILE
+    fi
+
+after_success:
+  - echo "VERSION NUMBER = $(cat $SWOOP_VERSION_FILE)"
+  - >
+    [ ${TRAVIS_PULL_REQUEST} = 'false' -a ${TRAVIS_BRANCH} = ${SWOOP_RELEASE_BRANCH} ] &&
+    echo "RELEASING: $(cat $SWOOP_VERSION_FILE)" &&
+    sbt publish &&
+    sbt publishMicrosite &&
+    curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GITHUB_TOKEN}" -X POST "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/releases" -d '{
+      "tag_name": "v'"${SWOOP_PROJECT_VERSION}"'",
+      "target_commitish": "'"${TRAVIS_COMMIT}"'",
+      "name": "v'"${SWOOP_PROJECT_VERSION}"'",
+      "body": "https://travis-ci.org/'"${TRAVIS_REPO_SLUG}"'/builds/'"${TRAVIS_BUILD_ID}"'",
+      "prerelease": false
+    }'
