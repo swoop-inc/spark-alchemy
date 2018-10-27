@@ -1,0 +1,987 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>TapOps - com.swoop.alchemy.utils.AnyExtensions.TapOps</title>
+          <meta name="description" content="TapOps - com.swoop.alchemy.utils.AnyExtensions.TapOps" />
+          <meta name="keywords" content="TapOps com.swoop.alchemy.utils.AnyExtensions.TapOps" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../index.html';
+            var hash = 'com.swoop.alchemy.utils.AnyExtensions$$TapOps';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="type">
+      <div id="definition">
+        <img alt="Class" src="../../../../lib/class_big.png" />
+        <p id="owner"><a href="../../../package.html" class="extype" name="com">com</a>.<a href="../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../package.html" class="extype" name="com.swoop.alchemy">alchemy</a>.<a href="package.html" class="extype" name="com.swoop.alchemy.utils">utils</a>.<a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">AnyExtensions</a></p>
+        <h1>TapOps</h1><h3><span class="morelinks"><div>Related Doc:
+            <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">package AnyExtensions</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TapOps</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Sugar for creating side-effects in method chains.</p></div><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyVal">AnyVal</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="com.swoop.alchemy.utils.AnyExtensions.TapOps"><span>TapOps</span></li><li class="in" name="scala.AnyVal"><span>AnyVal</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+                <span class="filtertype">Implicitly<br />
+                </span>
+                <ol id="implicits"> <li class="in" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps" data-hidden="false"><span>by ThrowOps</span></li><li class="in" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps" data-hidden="false"><span>by PrintOps</span></li><li class="in" name="com.swoop.alchemy.utils.AnyExtensions.TapOps" data-hidden="false"><span>by TapOps</span></li><li class="in" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps" data-hidden="false"><span>by TransformOps</span></li><li class="in" name="scala.Predef.any2stringadd" data-hidden="true"><span>by any2stringadd</span></li><li class="in" name="scala.Predef.StringFormat" data-hidden="true"><span>by StringFormat</span></li><li class="in" name="scala.Predef.Ensuring" data-hidden="true"><span>by Ensuring</span></li><li class="in" name="scala.Predef.ArrowAssoc" data-hidden="true"><span>by ArrowAssoc</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(underlying:A):com.swoop.alchemy.utils.AnyExtensions.TapOps[A]"></a>
+      <a id="&lt;init&gt;:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TapOps</span><span class="params">(<span name="underlying">underlying: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@&lt;init&gt;(underlying:A):com.swoop.alchemy.utils.AnyExtensions.TapOps[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@##():Int" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Predef.any2stringadd#+" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="+(other:String):String"></a>
+      <a id="+(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="implicit">+</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@+(other:String):String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method any2stringadd in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>any2stringadd</dd></dl></div>
+    </li><li name="scala.Predef.ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-&gt;[B](y:B):(A,B)"></a>
+      <a id="-&gt;[B](B):(TapOps[A],B)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>], <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method ArrowAssoc in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
+      <a id="ensuring((TapOps[A])⇒Boolean,⇒Any):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:A=&gt;Boolean):A"></a>
+      <a id="ensuring((TapOps[A])⇒Boolean):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
+      <a id="ensuring(Boolean,⇒Any):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ensuring(cond:Boolean):A"></a>
+      <a id="ensuring(Boolean):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@ensuring(cond:Boolean):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method Ensuring in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
+    </li><li name="scala.Predef.StringFormat#formatted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="formatted(fmtstr:String):String"></a>
+      <a id="formatted(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">formatted</span><span class="params">(<span name="fmtstr">fmtstr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@formatted(fmtstr:String):String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method StringFormat in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyVal#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_&lt;:AnyVal]"></a>
+      <a id="getClass():Class[_&lt;:AnyVal]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@getClass():Class[_&lt;:AnyVal]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyVal → Any</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#print" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="print[B](v:B):A"></a>
+      <a id="print[B](B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">print</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="v">v: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps.print.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@print[B](v:B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Prints a value as a side effect.</p><div class="fullcomment"><div class="comment cmt"><p>Prints a value as a side effect.
+</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the value to print</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#printIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printIf[B](predicate:A=&gt;Boolean,v:B):A"></a>
+      <a id="printIf[B]((TapOps[A])⇒Boolean,B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">printIf</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="predicate">predicate: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="v">v: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps.printIf.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@printIf[B](predicate:A=&gt;Boolean,v:B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally prints a value as a side effect.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally prints a value as a side effect.
+Use this instead of <span class="extype" name="printWhen()">printWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the value type; ignored</p></dd><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the value should be printed</p></dd><dt class="param">v</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#printIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printIf(predicate:A=&gt;Boolean):A"></a>
+      <a id="printIf((TapOps[A])⇒Boolean):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">printIf</span><span class="params">(<span name="predicate">predicate: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@printIf(predicate:A=&gt;Boolean):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally taps and prints the object in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally taps and prints the object in a method chain.
+Use this instead of <span class="extype" name="printWhen()">printWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the underlying value should be printed</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#printWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printWhen[B](condition:=&gt;Boolean,v:B):A"></a>
+      <a id="printWhen[B](⇒Boolean,B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">printWhen</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="v">v: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps.printWhen.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@printWhen[B](condition:=&gt;Boolean,v:B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally prints a value as a side effect.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally prints a value as a side effect.
+Use this instead of <span class="extype" name="printIf()">printIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the value type; ignored</p></dd><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the value should be printed</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#printWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="printWhen(condition:=&gt;Boolean):A"></a>
+      <a id="printWhen(⇒Boolean):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">printWhen</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@printWhen(condition:=&gt;Boolean):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally taps and prints the object in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally taps and prints the object in a method chain.
+Use this instead of <span class="extype" name="printIf()">printIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the underlying value should be printed</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tap[B](f:A=&gt;B):A"></a>
+      <a id="tap[B]((A)⇒B):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tap</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tap.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tap[B](f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a function for its side-effect as part of a method chain.
+Inspired by Ruby's <code>Object#tap</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tapIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tapIf[B](predicate:A=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="tapIf[B]((A)⇒Boolean)((A)⇒B):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tapIf</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="predicate">predicate: (<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tapIf.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tapIf[B](predicate:A=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a function for its side-effect as part of a method chain.
+Use this instead of <span class="extype" name="tapWhen()">tapWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the side-effect should be invoked</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tapWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tapWhen[B](condition:=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="tapWhen[B](⇒Boolean)((A)⇒B):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tapWhen</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tapWhen.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tapWhen[B](condition:=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a function for its side-effect as part of a method chain.
+Use this instead of <span class="extype" name="tapIf()">tapIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the side-effect should be invoked</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#tapp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tapp:A"></a>
+      <a id="tapp:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">tapp</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tapp:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Taps and prints the object in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Taps and prints the object in a method chain.
+Shorthand for <code>.tap(println)</code>.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p><code>underlying</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps#throwIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="throwIf[B&lt;:Throwable](predicate:A=&gt;Boolean)(e:=&gt;B):A"></a>
+      <a id="throwIf[B&lt;:Throwable]((TapOps[A])⇒Boolean)(⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">throwIf</span><span class="tparams">[<span name="B">B &lt;: <span class="extype" name="scala.Throwable">Throwable</span></span>]</span><span class="params">(<span name="predicate">predicate: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="e">e: ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps.throwIf.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@throwIf[B&lt;:Throwable](predicate:A=&gt;Boolean)(e:=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Raises an exception if a predicate is satisfied.</p><div class="fullcomment"><div class="comment cmt"><p>Raises an exception if a predicate is satisfied.
+Use this instead of <span class="extype" name="throwWhen()">throwWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the exception type</p></dd><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the exception should be thrown</p></dd><dt class="param">e</dt><dd class="cmt"><p>expression that will return an exception</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code> if the predicate evaluates to <code>false</code>.</p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method ThrowOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps#throwWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="throwWhen[B&lt;:Throwable](condition:=&gt;Boolean,e:=&gt;B):A"></a>
+      <a id="throwWhen[B&lt;:Throwable](⇒Boolean,⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">throwWhen</span><span class="tparams">[<span name="B">B &lt;: <span class="extype" name="scala.Throwable">Throwable</span></span>]</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="e">e: ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps.throwWhen.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@throwWhen[B&lt;:Throwable](condition:=&gt;Boolean,e:=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Raises an exception if a condition is satisfied.</p><div class="fullcomment"><div class="comment cmt"><p>Raises an exception if a condition is satisfied.
+Use this instead of <span class="extype" name="throwIf()">throwIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the exception type</p></dd><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the exception should be thrown</p></dd><dt class="param">e</dt><dd class="cmt"><p>expression that will return an exception</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code> if the predicate evaluates to <code>false</code>.</p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method ThrowOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a></dd><dt>Exceptions thrown</dt><dd><span class="cmt"></span></dd></dl></div>
+    </li><li name="scala.Any#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@toString():String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TransformOps#transform" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform[B](f:A=&gt;B):B"></a>
+      <a id="transform[B]((TapOps[A])⇒B):B"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">transform</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.transform.B">B</span></span>)</span><span class="result">: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.transform.B">B</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@transform[B](f:A=&gt;B):B" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies a transformer function in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a transformer function in a method chain.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type</p></dd><dt class="param">f</dt><dd class="cmt"><p>function to apply</p></dd><dt>returns</dt><dd class="cmt"><p>the result of applying <code>f</code> on <code>underlying</code>.</p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TransformOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TransformOps#transformIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformIf[B&lt;:A](predicate:A=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="transformIf[B&lt;:A]((TapOps[A])⇒Boolean)((TapOps[A])⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">transformIf</span><span class="tparams">[<span name="B">B &lt;: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.A">A</span></span>]</span><span class="params">(<span name="predicate">predicate: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.transformIf.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@transformIf[B&lt;:A](predicate:A=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a transformer function in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a transformer function in a method chain.
+Use this instead of <span class="extype" name="transformWhen()">transformWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function</p></dd><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the function should be applied</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code> if the predicate evaluates to <code>false</code> or the result of function application.</p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TransformOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TransformOps#transformWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformWhen[B&lt;:A](condition:=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="transformWhen[B&lt;:A](⇒Boolean)((TapOps[A])⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit">transformWhen</span><span class="tparams">[<span name="B">B &lt;: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.A">A</span></span>]</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps.transformWhen.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@transformWhen[B&lt;:A](condition:=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a transformer function in a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a transformer function in a method chain.
+Use this instead of <span class="extype" name="transformIf()">transformIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function</p></dd><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the function should be applied</p></dd><dt>returns</dt><dd class="cmt"><p><code>underlying</code> if the expression evaluates to <code>false</code> or the result of function application.</p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TransformOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#underlying" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="underlying:A"></a>
+      <a id="underlying:A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">underlying</span><span class="result">: <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@underlying:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="scala.Predef.ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="→[B](y:B):(A,B)"></a>
+      <a id="→[B](B):(TapOps[A],B)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>], <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@→[B](y:B):(A,B)" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method ArrowAssoc in scala.Predef.
+            
+          </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Shadowed Implicit Value Members</h3>
+              <ol><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tap[B](f:A=&gt;B):A"></a>
+      <a id="tap[B]((TapOps[A])⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">tap</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tap.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tap[B](f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a function for its side-effect as part of a method chain.
+Inspired by Ruby's <code>Object#tap</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TapOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: TapOps[TapOps[A]]).tap(f)</pre></div></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tapIf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tapIf[B](predicate:A=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="tapIf[B]((TapOps[A])⇒Boolean)((TapOps[A])⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">tapIf</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="predicate">predicate: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tapIf.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tapIf[B](predicate:A=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a function for its side-effect as part of a method chain.
+Use this instead of <span class="extype" name="tapWhen()">tapWhen()</span> when the predicate requires the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">predicate</dt><dd class="cmt"><p>predicate to evaluate to determine if the side-effect should be invoked</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TapOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: TapOps[TapOps[A]]).tapIf(predicate)(f)</pre></div></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#tapWhen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tapWhen[B](condition:=&gt;Boolean)(f:A=&gt;B):A"></a>
+      <a id="tapWhen[B](⇒Boolean)((TapOps[A])⇒B):TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">tapWhen</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="condition">condition: ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="params">(<span name="f">f: (<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]) ⇒ <span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.tapWhen.B">B</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@tapWhen[B](condition:=&gt;Boolean)(f:A=&gt;B):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Conditionally applies a function for its side-effect as part of a method chain.</p><div class="fullcomment"><div class="comment cmt"><p>Conditionally applies a function for its side-effect as part of a method chain.
+Use this instead of <span class="extype" name="tapIf()">tapIf()</span> when the condition does not require the value of <code>underlying</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>the return type of the function; ignored</p></dd><dt class="param">condition</dt><dd class="cmt"><p>condition to evaluate to determine if the side-effect should be invoked</p></dd><dt class="param">f</dt><dd class="cmt"><p>side-effect function to call</p></dd><dt>returns</dt><dd class="cmt"><p><code>this</code></p></dd></dl><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TapOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: TapOps[TapOps[A]]).tapWhen(condition)(f)</pre></div></dd><dt>Annotations</dt><dd>
+                <span class="name">@inline</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps#underlying" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="underlying:A"></a>
+      <a id="underlying:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">underlying</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@underlying:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method ThrowOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: ThrowOps[TapOps[A]]).underlying</pre></div></dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.PrintOps#underlying" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="underlying:A"></a>
+      <a id="underlying:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">underlying</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@underlying:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method PrintOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: PrintOps[TapOps[A]]).underlying</pre></div></dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TapOps#underlying" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="underlying:A"></a>
+      <a id="underlying:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">underlying</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@underlying:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TapOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: TapOps[TapOps[A]]).underlying</pre></div></dd></dl></div>
+    </li><li name="com.swoop.alchemy.utils.AnyExtensions.TransformOps#underlying" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="underlying:A"></a>
+      <a id="underlying:TapOps[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="implicit shadowed">underlying</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#com.swoop.alchemy.utils.AnyExtensions$$TapOps@underlying:A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to
+            <a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]] performed by method TransformOps in <a href="AnyExtensions$.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions">com.swoop.alchemy.utils.AnyExtensions</a>.
+            
+          </dd><dt class="implicit">Shadowing</dt><dd>This implicitly inherited member is shadowed by one or more members in this class.<br />To access this member you can use a <a href="http://stackoverflow.com/questions/2087250/what-is-the-purpose-of-type-ascription-in-scala" target="_blank">type ascription</a>:<br /><div class="cmt"><pre>(tapOps: TransformOps[TapOps[A]]).underlying</pre></div></dd><dt>Definition Classes</dt><dd><a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyVal">
+              <h3>Inherited from <span class="extype" name="scala.AnyVal">AnyVal</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        <div class="conversion" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">
+              <h3>Inherited by implicit conversion ThrowOps from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <a href="AnyExtensions$$ThrowOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.ThrowOps">ThrowOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">
+              <h3>Inherited by implicit conversion PrintOps from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <a href="AnyExtensions$$PrintOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.PrintOps">PrintOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">
+              <h3>Inherited by implicit conversion TapOps from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">
+              <h3>Inherited by implicit conversion TransformOps from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <a href="AnyExtensions$$TransformOps.html" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TransformOps">TransformOps</a>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="scala.Predef.any2stringadd">
+              <h3>Inherited by implicit conversion any2stringadd from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="scala.Predef.StringFormat">
+              <h3>Inherited by implicit conversion StringFormat from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="scala.Predef.Ensuring">
+              <h3>Inherited by implicit conversion Ensuring from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div><div class="conversion" name="scala.Predef.ArrowAssoc">
+              <h3>Inherited by implicit conversion ArrowAssoc from
+                <a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>] to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps">TapOps</a>[<span class="extype" name="com.swoop.alchemy.utils.AnyExtensions.TapOps.A">A</span>]]
+              </h3>
+            </div>
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
