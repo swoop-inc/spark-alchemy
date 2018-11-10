@@ -19,21 +19,30 @@ lazy val alchemy = (project in file("."))
     resourceDirectory in Compile := baseDirectory.value / "alchemy/src/main/resources",
     resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      scalaTest % Test withSources()
-    )
+      scalaTest % Test withSources(),
+      "com.swoop" %% "spark-test-sugar" % "1.5.0" % Test withSources()
+    ),
+    libraryDependencies ++= sparkDependencies,
+    fork in Test := true // required for Spark
   )
 
 lazy val test = (project in file("alchemy-test"))
   .settings(
     name := "spark-alchemy-test",
     libraryDependencies ++= Seq(
-      "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources(),
-      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
-        excludeAll ExclusionRule(organization = "org.mortbay.jetty"),
-      "org.apache.spark" %% "spark-hive" % sparkVersion % "provided" withSources(),
       scalaTest % Test withSources()
-    )
+    ),
+    libraryDependencies ++= sparkDependencies
   )
+
+lazy val sparkDependencies = Seq(
+  "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
+  "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
+  "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources(),
+  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
+    excludeAll ExclusionRule(organization = "org.mortbay.jetty"),
+  "org.apache.spark" %% "spark-hive" % sparkVersion % "provided" withSources()
+)
 
 enablePlugins(BuildInfoPlugin)
 enablePlugins(GitVersioning, GitBranchPrompt)
