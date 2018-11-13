@@ -1,0 +1,461 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>hll - com.swoop.alchemy.spark.expressions.hll</title>
+          <meta name="description" content="hll - com.swoop.alchemy.spark.expressions.hll" />
+          <meta name="keywords" content="hll com.swoop.alchemy.spark.expressions.hll" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../../../../index.html';
+            var hash = 'com.swoop.alchemy.spark.expressions.hll.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../../../../lib/package_big.png" />
+        <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../../../package.html" class="extype" name="com.swoop.alchemy">alchemy</a>.<a href="../../package.html" class="extype" name="com.swoop.alchemy.spark">spark</a>.<a href="../package.html" class="extype" name="com.swoop.alchemy.spark.expressions">expressions</a></p>
+        <h1>hll</h1><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hll</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.swoop.alchemy.spark.expressions.hll.BoundHLL" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BoundHLLextendsSerializable"></a>
+      <a id="BoundHLL:BoundHLL"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BoundHLL.html"><span class="name">BoundHLL</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@BoundHLLextendsSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convenience trait to use HyperLogLog functions with the same error consistently.</p><div class="fullcomment"><div class="comment cmt"><p>Convenience trait to use HyperLogLog functions with the same error consistently.
+Spark's own <span class="extype" name="sql.functions.approx_count_distinct()">sql.functions.approx_count_distinct()</span> as well as the granular HLL
+<span class="extype" name="HLLFunctions.hll_init()">HLLFunctions.hll_init()</span> and <span class="extype" name="HLLFunctions.hll_init_collection()">HLLFunctions.hll_init_collection()</span> will be
+automatically parameterized by <a href="BoundHLL.html#hllError:Double" class="extmbr" name="com.swoop.alchemy.spark.expressions.hll.BoundHLL#hllError">BoundHLL.hllError</a>.
+</p></div></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.CardinalityHashFunction" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="CardinalityHashFunctionextendsInterpretedHashFunction"></a>
+      <a id="CardinalityHashFunction:CardinalityHashFunction"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CardinalityHashFunction.html"><span class="name">CardinalityHashFunction</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.InterpretedHashFunction">InterpretedHashFunction</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@CardinalityHashFunctionextendsInterpretedHashFunction" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Hash function for Spark data values that is suitable for cardinality counting.</p><div class="fullcomment"><div class="comment cmt"><p>Hash function for Spark data values that is suitable for cardinality counting. Unlike Spark's built-in hashing,
+it differentiates between different data types and accounts for nulls.
+</p></div></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HLLFunctions" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HLLFunctionsextendsWithHelper"></a>
+      <a id="HLLFunctions:HLLFunctions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HLLFunctions.html"><span class="name">HLLFunctions</span></a><span class="result"> extends <a href="../WithHelper.html" class="extype" name="com.swoop.alchemy.spark.expressions.WithHelper">WithHelper</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HLLFunctionsextendsWithHelper" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogCardinalityextendsUnaryExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable"></a>
+      <a id="HyperLogLogCardinality:HyperLogLogCardinality"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogCardinality.html"><span class="name">HyperLogLogCardinality</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogCardinalityextendsUnaryExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>Returns the estimated cardinality of an HLL++ &quot;sketch&quot;
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>HLL+ &quot;sketch&quot;</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCollection" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HyperLogLogCollectionextendsExpressionwithHyperLogLogInit"></a>
+      <a id="HyperLogLogCollection:HyperLogLogCollection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogCollection.html"><span class="name">HyperLogLogCollection</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <a href="HyperLogLogInit.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInit">HyperLogLogInit</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogCollectionextendsExpressionwithHyperLogLogInit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInit" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HyperLogLogInitextendsExpression"></a>
+      <a id="HyperLogLogInit:HyperLogLogInit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInit.html"><span class="name">HyperLogLogInit</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitextendsExpression" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitAgg" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HyperLogLogInitAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withNullableSketchAggregationwithHyperLogLogInit"></a>
+      <a id="HyperLogLogInitAgg:HyperLogLogInitAgg"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitAgg.html"><span class="name">HyperLogLogInitAgg</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate">TypedImperativeAggregate</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="com.clearspring.analytics.stream.cardinality.HyperLogLogPlus">HyperLogLogPlus</span>]] with <a href="NullableSketchAggregation.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.NullableSketchAggregation">NullableSketchAggregation</a> with <a href="HyperLogLogInit.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInit">HyperLogLogInit</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withNullableSketchAggregationwithHyperLogLogInit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitCollection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogInitCollectionextendsUnaryExpressionwithHyperLogLogInitSinglewithHyperLogLogCollectionwithProductwithSerializable"></a>
+      <a id="HyperLogLogInitCollection:HyperLogLogInitCollection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitCollection.html"><span class="name">HyperLogLogInitCollection</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="relativeSD">relativeSD: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Double" class="extype" target="_top">Double</a> = <span class="symbol">0.05</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span> with <a href="HyperLogLogInitSingle.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitSingle">HyperLogLogInitSingle</a> with <a href="HyperLogLogCollection.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCollection">HyperLogLogCollection</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitCollectionextendsUnaryExpressionwithHyperLogLogInitSinglewithHyperLogLogCollectionwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version creates a composable &quot;sketch&quot; for each input row.
+Expression must be is a collection (Array, Map), and collection elements are treated as individual values.
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>to estimate the cardinality of.</p></dd><dt class="param">relativeSD</dt><dd class="cmt"><p>defines the maximum estimation error allowed</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitCollectionAgg" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogInitCollectionAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withHyperLogLogInitAggwithHyperLogLogCollectionwithProductwithSerializable"></a>
+      <a id="HyperLogLogInitCollectionAgg:HyperLogLogInitCollectionAgg"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitCollectionAgg.html"><span class="name">HyperLogLogInitCollectionAgg</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="relativeSD">relativeSD: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Double" class="extype" target="_top">Double</a> = <span class="symbol">0.05</span></span>, <span name="mutableAggBufferOffset">mutableAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>, <span name="inputAggBufferOffset">inputAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate">TypedImperativeAggregate</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="com.clearspring.analytics.stream.cardinality.HyperLogLogPlus">HyperLogLogPlus</span>]] with <a href="HyperLogLogInitAgg.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitAgg">HyperLogLogInitAgg</a> with <a href="HyperLogLogCollection.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCollection">HyperLogLogCollection</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitCollectionAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withHyperLogLogInitAggwithHyperLogLogCollectionwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version combines all input in each aggregate group into a a single &quot;sketch&quot;.
+If <code>expr</code> is a collection (Array, Map), collection elements are treated as individual values.
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>to estimate the cardinality of</p></dd><dt class="param">relativeSD</dt><dd class="cmt"><p>defines the maximum estimation error allowed</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitSimple" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogInitSimpleextendsUnaryExpressionwithHyperLogLogInitSinglewithHyperLogLogSimplewithProductwithSerializable"></a>
+      <a id="HyperLogLogInitSimple:HyperLogLogInitSimple"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitSimple.html"><span class="name">HyperLogLogInitSimple</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="relativeSD">relativeSD: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Double" class="extype" target="_top">Double</a> = <span class="symbol">0.05</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span> with <a href="HyperLogLogInitSingle.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitSingle">HyperLogLogInitSingle</a> with <a href="HyperLogLogSimple.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogSimple">HyperLogLogSimple</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitSimpleextendsUnaryExpressionwithHyperLogLogInitSinglewithHyperLogLogSimplewithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version creates a composable &quot;sketch&quot; for each input row.
+All expression values treated as simple values.
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>to estimate the cardinality of.</p></dd><dt class="param">relativeSD</dt><dd class="cmt"><p>defines the maximum estimation error allowed</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitSimpleAgg" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogInitSimpleAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withHyperLogLogInitAggwithHyperLogLogSimplewithProductwithSerializable"></a>
+      <a id="HyperLogLogInitSimpleAgg:HyperLogLogInitSimpleAgg"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitSimpleAgg.html"><span class="name">HyperLogLogInitSimpleAgg</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="relativeSD">relativeSD: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Double" class="extype" target="_top">Double</a> = <span class="symbol">0.05</span></span>, <span name="mutableAggBufferOffset">mutableAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>, <span name="inputAggBufferOffset">inputAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a> = <span class="symbol">0</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate">TypedImperativeAggregate</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="com.clearspring.analytics.stream.cardinality.HyperLogLogPlus">HyperLogLogPlus</span>]] with <a href="HyperLogLogInitAgg.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitAgg">HyperLogLogInitAgg</a> with <a href="HyperLogLogSimple.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogSimple">HyperLogLogSimple</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitSimpleAggextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withHyperLogLogInitAggwithHyperLogLogSimplewithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version combines all input in each aggregate group into a single &quot;sketch&quot;.
+All expression values treated as simple values.
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>to estimate the cardinality of</p></dd><dt class="param">relativeSD</dt><dd class="cmt"><p>defines the maximum estimation error allowed</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInitSingle" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HyperLogLogInitSingleextendsUnaryExpressionwithHyperLogLogInitwithCodegenFallback"></a>
+      <a id="HyperLogLogInitSingle:HyperLogLogInitSingle"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogInitSingle.html"><span class="name">HyperLogLogInitSingle</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span> with <a href="HyperLogLogInit.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInit">HyperLogLogInit</a> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogInitSingleextendsUnaryExpressionwithHyperLogLogInitwithCodegenFallback" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogMerge" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogMergeextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withNullableSketchAggregationwithProductwithSerializable"></a>
+      <a id="HyperLogLogMerge:HyperLogLogMerge"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogMerge.html"><span class="name">HyperLogLogMerge</span></a><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="mutableAggBufferOffset">mutableAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="inputAggBufferOffset">inputAggBufferOffset: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate">TypedImperativeAggregate</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="com.clearspring.analytics.stream.cardinality.HyperLogLogPlus">HyperLogLogPlus</span>]] with <a href="NullableSketchAggregation.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.NullableSketchAggregation">NullableSketchAggregation</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogMergeextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withNullableSketchAggregationwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version merges the &quot;sketches&quot; into a combined binary composable representation.
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>&quot;sketch&quot; to merge</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogSimple" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="HyperLogLogSimpleextendsExpressionwithHyperLogLogInit"></a>
+      <a id="HyperLogLogSimple:HyperLogLogSimple"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogSimple.html"><span class="name">HyperLogLogSimple</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <a href="HyperLogLogInit.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogInit">HyperLogLogInit</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogSimpleextendsExpressionwithHyperLogLogInit" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.NullableSketchAggregation" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="NullableSketchAggregationextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]"></a>
+      <a id="NullableSketchAggregation:NullableSketchAggregation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NullableSketchAggregation.html"><span class="name">NullableSketchAggregation</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate">TypedImperativeAggregate</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="com.clearspring.analytics.stream.cardinality.HyperLogLogPlus">HyperLogLogPlus</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@NullableSketchAggregationextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="com.swoop.alchemy.spark.expressions.hll.BoundHLL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BoundHLL"></a>
+      <a id="BoundHLL:BoundHLL"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="BoundHLL$.html"><span class="name">BoundHLL</span></a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@BoundHLL" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.CardinalityXxHash64Function" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CardinalityXxHash64Function"></a>
+      <a id="CardinalityXxHash64Function:CardinalityXxHash64Function"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CardinalityXxHash64Function$.html"><span class="name">CardinalityXxHash64Function</span></a><span class="result"> extends <a href="CardinalityHashFunction.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.CardinalityHashFunction">CardinalityHashFunction</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@CardinalityXxHash64Function" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HLLFunctionRegistration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HLLFunctionRegistration"></a>
+      <a id="HLLFunctionRegistration:HLLFunctionRegistration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HLLFunctionRegistration$.html"><span class="name">HLLFunctionRegistration</span></a><span class="result"> extends <a href="../NativeFunctionRegistration.html" class="extype" name="com.swoop.alchemy.spark.expressions.NativeFunctionRegistration">NativeFunctionRegistration</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HLLFunctionRegistration" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.functions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="functions"></a>
+      <a id="functions:functions"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="functions$.html"><span class="name">functions</span></a><span class="result"> extends <a href="HLLFunctions.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HLLFunctions">HLLFunctions</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@functions" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
