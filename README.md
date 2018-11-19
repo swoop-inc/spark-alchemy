@@ -18,28 +18,13 @@ libraryDependencies += "com.swoop" %% "spark-alchemy" % "<version>"
 
 You can find all released versions [here](https://github.com/swoop-inc/spark-alchemy/releases).
 
-## What you'll find here
+## For Spark users
 
-### An extensive set of native HyperLogLog functions
+- Native [HyperLogLog functions](../../wiki/Spark-HyperLogLog-Functions) that offer reaggregatable fast approximate distinct counting capabilities far beyond those in OSS Spark with interoperability to Postgres and even JavaScript.
 
-See the [available HyperLogLog functions](https://github.com/swoop-inc/spark-alchemy/blob/master/alchemy/src/main/scala/com/swoop/alchemy/spark/expressions/hll/HLLFunctionRegistration.scala).
+## For Spark framework developers
 
-Precise distinct counts are expensive to compute because 
-
-1. When large cardinalities are involved, precise distinct counts require a lot of memory/IO, and
-2. Every row of data has to be processed for every query because distinct counts cannot be reaggregated
-
-[HyperLogLog](https://en.wikipedia.org/wiki/HyperLogLog) (HLL) can address both problems. Memory use is reduced via the tight binary sketch representation and the data can be pre-aggregated because HLL binary sketches can be merged. Useful background reading: [HLL in BigQuery](https://cloud.google.com/blog/products/gcp/counting-uniques-faster-in-bigquery-with-hyperloglog) and [HLL in Spark](https://databricks.com/blog/2016/05/19/approximate-algorithms-in-apache-spark-hyperloglog-and-quantiles.html). It is unfortunate that Spark's HLL implementation does not expose the binary HLL sketches, which makes its usefulness rather limited: it addresses (1) but not (2) above.
-
-The HLL Spark native functions in `spark-alchemy` provide two key benefits:
-
-1. They expose HLL sketches as binary columns, enabling 1,000+x speedups in approximate distinct count computation via pre-aggregation.
-
-2. They enable interoperability at the HLL sketch level with other data processing systems. We use an open-source [HLL library](https://github.com/aggregateknowledge/java-hll) with an independent [storage specification](https://github.com/aggregateknowledge/hll-storage-spec) and [built-in support for Postgres-compatible databases](https://github.com/citusdata/postgresql-hll) and even [JavaScript](https://github.com/aggregateknowledge/js-hll). This allows Spark to serve as a universal data (pre-)processing platform for systems that require fast query times, e.g., portals & dashboards.
-
-### General utilities
-
-- [Spark native function registration](https://github.com/swoop-inc/spark-alchemy/blob/master/alchemy/src/main/scala/com/swoop/alchemy/spark/expressions/NativeFunctionRegistration.scala) because there is no way to access this useful functionality from Spark's codebase.
+- Helpers for [native function registration](../../wiki/Spark-Native-Functions)
 
 ## What's coming
 
@@ -68,7 +53,7 @@ The HLL Spark native functions in `spark-alchemy` provide two key benefits:
 
 Contributions and feedback of any kind are welcome. Please, create an issue and/or pull request.
 
-Spark Records is maintained by the team at [Swoop](https://www.swoop.com). If you'd like to contribute to our open-source efforts, by joining our team or from your company, let us know at `spark-interest at swoop dot com`.
+Spark Alchemy is maintained by the team at [Swoop](https://www.swoop.com). If you'd like to contribute to our open-source efforts, by joining our team or from your company, let us know at `spark-interest at swoop dot com`.
 
 ## License
 
