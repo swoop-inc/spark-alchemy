@@ -7,7 +7,7 @@ import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.catalyst.analysis.TypeCheckResult
 import org.apache.spark.sql.catalyst.expressions.aggregate.{HyperLogLogPlusPlus, TypedImperativeAggregate}
 import org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback
-import org.apache.spark.sql.catalyst.expressions.{ExpectsInputTypes, Expression, ExpressionDescription, UnaryExpression}
+import org.apache.spark.sql.catalyst.expressions.{BinaryExpression, ExpectsInputTypes, Expression, ExpressionDescription, UnaryExpression}
 import org.apache.spark.sql.catalyst.util.{ArrayData, MapData}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types._
@@ -331,18 +331,62 @@ case class HyperLogLogMerge(
   override def prettyName: String = "hll_merge"
 }
 
+/**
+  * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
+  *
+  * This version merges multiple "sketches" in one row into a single field.
+  *
+  * @param children "sketch" row fields to merge
+  */
+@ExpressionDescription(
+  usage =
+    """
+_FUNC_(expr) - Returns the merged HLL++ sketch.
+""")
+case class HyperLogLogRowMerge(children: Seq[Expression])
+  extends Expression with ExpectsInputTypes with CodegenFallback {
+
+  require(children.nonEmpty, s"$prettyName requires at least one argument.")
+
+
+  /** The 1st child (separator) is str, and rest are either str or array of str. */
+  override def inputTypes: Seq[DataType] = Seq.fill(children.size)(BinaryType)
+
+  override def dataType: DataType = BinaryType
+
+  override def nullable: Boolean = children.exists(_.nullable)
+
+  override def foldable: Boolean = children.forall(_.foldable)
+
+  override def eval(input: InternalRow): Any = {
+    val flatInputs = children.flatMap(_.eval(input) match {
+      case null => None
+      case b: Array[Byte] => Some(HyperLogLogPlus.Builder.build(b))
+      case _ => throw new IllegalStateException(s"$prettyName only supports Array[Byte]")
+    })
+
+    if (flatInputs.isEmpty) null
+    else {
+      val acc = flatInputs.head
+      flatInputs.tail.foreach(acc.addAll)
+      acc.getBytes
+    }
+  }
+
+  override def prettyName: String = "hll_row_merge"
+}
 
 /**
   * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
   *
   * Returns the estimated cardinality of an HLL++ "sketch"
   *
-  * @param child HLL+ "sketch"
+  * @param child HLL++ "sketch"
   */
 @ExpressionDescription(
   usage =
     """
-    _FUNC_(expr) - Returns the estimated cardinality of the binary representation produced by HyperLogLog++.
+    _FUNC_(sketch) - Returns the estimated cardinality of the binary representation produced by HyperLogLog++.
   """)
 case class HyperLogLogCardinality(override val child: Expression) extends UnaryExpression with ExpectsInputTypes with CodegenFallback {
 
@@ -350,22 +394,46 @@ case class HyperLogLogCardinality(override val child: Expression) extends UnaryE
 
   override def dataType: DataType = LongType
 
-  override def nullable: Boolean = child.nullable
-
-  override def checkInputDataTypes(): TypeCheckResult = {
-    child.dataType match {
-      case BinaryType => TypeCheckResult.TypeCheckSuccess
-      case _ => TypeCheckResult.TypeCheckFailure(s"$prettyName only supports binary input")
-    }
-  }
-
   override def nullSafeEval(input: Any): Long = {
     val data = input.asInstanceOf[Array[Byte]]
     HyperLogLogPlus.Builder.build(data).cardinality()
   }
 
   override def prettyName: String = "hll_cardinality"
+}
 
+/**
+  * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
+  *
+  * Returns the estimated intersection cardinality of two HLL++ "sketches"
+  *
+  * @param left  HLL++ "sketch"
+  * @param right HLL++ "sketch"
+  */
+@ExpressionDescription(
+  usage =
+    """
+    _FUNC_(sketch, sketch) - Returns the estimated intersection cardinality of the binary representations produced by HyperLogLog++.
+  """)
+case class HyperLogLogIntersectionCardinality(override val left: Expression, override val right: Expression) extends BinaryExpression with ExpectsInputTypes with CodegenFallback {
+
+  override def inputTypes: Seq[DataType] = Seq(BinaryType, BinaryType)
+
+  override def dataType: DataType = LongType
+
+  override def nullSafeEval(input1: Any, input2: Any): Any = {
+    val leftHLL = HyperLogLogPlus.Builder.build(input1.asInstanceOf[Array[Byte]])
+    val rightHLL = HyperLogLogPlus.Builder.build(input2.asInstanceOf[Array[Byte]])
+
+    val leftCount = leftHLL.cardinality()
+    val rightCount = rightHLL.cardinality()
+    leftHLL.addAll(rightHLL)
+    val unionCount = leftHLL.cardinality()
+
+    (leftCount + rightCount) - unionCount
+  }
+
+  override def prettyName: String = "hll_intersect_cardinality"
 }
 
 object functions extends HLLFunctions
@@ -435,10 +503,24 @@ trait HLLFunctions extends WithHelper {
   def hll_merge(columnName: String): Column =
     hll_merge(col(columnName))
 
+  def hll_row_merge(es: Column*): Column = withExpr {
+    HyperLogLogRowMerge(es.map(_.expr))
+  }
+  // split arguments to avoid collision w/ above after erasure
+  def hll_row_merge(columnName: String, columnNames: String*): Column =
+    hll_row_merge((columnName +: columnNames).map(col): _*)
+
   def hll_cardinality(e: Column): Column = withExpr {
     HyperLogLogCardinality(e.expr)
   }
 
   def hll_cardinality(columnName: String): Column =
     hll_cardinality(col(columnName))
+
+  def hll_intersect_cardinality(l: Column, r: Column): Column = withExpr {
+    HyperLogLogIntersectionCardinality(l.expr, r.expr)
+  }
+
+  def hll_intersect_cardinality(leftColumnName: String, rightColumnName: String): Column =
+    hll_intersect_cardinality(col(leftColumnName), col(rightColumnName))
 }

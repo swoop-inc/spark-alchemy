@@ -19,6 +19,8 @@ object HLLFunctionsTestHelpers {
 
   case class Data2(c1: Array[String], c2: Map[String, String])
 
+  case class Data3(c1: String, c2: String, c3: String)
+
 }
 
 class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
@@ -52,14 +54,16 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
 
       noException should be thrownBy spark.sql(
         """select
-          |  hll_cardinality(hll_merge(hll_init(array(1,2,3)))),
+          |  hll_cardinality(hll_merge(hll_init(1))),
           |  hll_cardinality(hll_merge(hll_init_collection(array(1,2,3)))),
-          |  hll_cardinality(hll_init_agg(array(1,2,3))),
+          |  hll_cardinality(hll_init_agg(1)),
           |  hll_cardinality(hll_init_collection_agg(array(1,2,3))),
-          |  hll_cardinality(hll_merge(hll_init(array(1,2,3), 0.05))),
+          |  hll_cardinality(hll_merge(hll_init(1, 0.05))),
           |  hll_cardinality(hll_merge(hll_init_collection(array(1,2,3), 0.05))),
-          |  hll_cardinality(hll_init_agg(array(1,2,3), 0.05)),
-          |  hll_cardinality(hll_init_collection_agg(array(1,2,3), 0.05))
+          |  hll_cardinality(hll_init_agg(1, 0.05)),
+          |  hll_cardinality(hll_init_collection_agg(array(1,2,3), 0.05)),
+          |  hll_cardinality(hll_row_merge(hll_init(1),hll_init(1))),
+          |  hll_intersect_cardinality(hll_init(1), hll_init(1))
         """.stripMargin
       )
     }
@@ -216,4 +220,52 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
         hll_cardinality(col(name)).as(s"c$idx")
       }: _*
     ).head.toSeq.map(_.asInstanceOf[Long])
+
+  "HyperLogLog row merge function" should {
+    // @todo merge tests with grouping
+    "estimate cardinality correctly" in {
+      import spark.implicits._
+
+      val df = spark.createDataset[Data3](Seq[Data3](
+        Data3("a", "a", "a"),
+        Data3("a", "b", "c"),
+        Data3("a", "b", null),
+        Data3("a", null, null),
+        Data3(null, null, null)
+      ))
+
+      val results = df
+        .select(hll_init('c1).as('c1), hll_init('c2).as('c2), hll_init('c3).as('c3))
+        .select(hll_cardinality(hll_row_merge('c1, 'c2, 'c3)))
+        .na.fill(-1)
+        .as[Long]
+        .head(5)
+        .toSeq
+
+      results should be(Seq(1, 3, 2, 1, -1)) // nulls skipped
+    }
+  }
+
+  "HyperLogLog intersection function" should {
+    // @todo merge tests with grouping
+    "estimate cardinality correctly" in {
+      import spark.implicits._
+
+      val df = spark.createDataset[Data3](Seq[Data3](
+        Data3("a", "e", "f"),
+        Data3("b", "d", "g"),
+        Data3("c", "c", "h"),
+        Data3("d", "b", "i"),
+        Data3("e", "a", "j")
+      ))
+
+      val results = df
+        .select(hll_init_agg('c1).as('c1), hll_init_agg('c2).as('c2), hll_init_agg('c3).as('c3))
+        .select(hll_intersect_cardinality('c1, 'c2), hll_intersect_cardinality('c2, 'c3))
+        .as[(Long,Long)]
+        .head()
+
+      results should be((5, 0))
+    }
+  }
 }

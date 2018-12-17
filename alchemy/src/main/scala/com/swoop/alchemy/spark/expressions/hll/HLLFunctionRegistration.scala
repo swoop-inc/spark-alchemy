@@ -11,7 +11,9 @@ object HLLFunctionRegistration extends NativeFunctionRegistration {
     expression[HyperLogLogInitSimpleAgg]("hll_init_agg"),
     expression[HyperLogLogInitCollectionAgg]("hll_init_collection_agg"),
     expression[HyperLogLogMerge]("hll_merge"),
-    expression[HyperLogLogCardinality]("hll_cardinality")
+    expression[HyperLogLogRowMerge]("hll_row_merge"),
+    expression[HyperLogLogCardinality]("hll_cardinality"),
+    expression[HyperLogLogIntersectionCardinality]("hll_intersect_cardinality")
   )
 
 }
