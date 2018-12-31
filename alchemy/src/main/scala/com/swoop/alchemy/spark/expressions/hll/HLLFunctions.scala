@@ -282,7 +282,7 @@ case class HyperLogLogInitCollectionAgg(
 /**
   * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
   *
-  * This version merges the "sketches" into a combined binary composable representation.
+  * This version aggregates the "sketches" into a single merged "sketch" that represents the union of the constituents.
   *
   * @param child "sketch" to merge
   */
@@ -335,6 +335,7 @@ case class HyperLogLogMerge(
   * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
   *
   * This version merges multiple "sketches" in one row into a single field.
+  * @see HyperLogLogMerge
   *
   * @param children "sketch" row fields to merge
   */
@@ -348,13 +349,11 @@ case class HyperLogLogRowMerge(children: Seq[Expression])
 
   require(children.nonEmpty, s"$prettyName requires at least one argument.")
 
-
-  /** The 1st child (separator) is str, and rest are either str or array of str. */
   override def inputTypes: Seq[DataType] = Seq.fill(children.size)(BinaryType)
 
   override def dataType: DataType = BinaryType
 
-  override def nullable: Boolean = children.exists(_.nullable)
+  override def nullable: Boolean = children.forall(_.nullable)
 
   override def foldable: Boolean = children.forall(_.foldable)
 
@@ -405,15 +404,23 @@ case class HyperLogLogCardinality(override val child: Expression) extends UnaryE
 /**
   * HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.
   *
-  * Returns the estimated intersection cardinality of two HLL++ "sketches"
+  * Computes a merged (unioned) sketch and uses the fact that |A intersect B| = (|A| + |B|) - |A union B| to estimate
+  * the intersection cardinality of two HLL++ "sketches".
+  *
+  * @see HyperLogLogRowMerge
+  * @see HyperLogLogCardinality
   *
   * @param left  HLL++ "sketch"
   * @param right HLL++ "sketch"
+  *
+  * @return the estimated intersection cardinality (0 if one sketch is null, but null if both are)
   */
 @ExpressionDescription(
   usage =
     """
-    _FUNC_(sketch, sketch) - Returns the estimated intersection cardinality of the binary representations produced by HyperLogLog++.
+    _FUNC_(sketchL, sketchR) - Returns the estimated intersection cardinality of the binary representations produced by
+    HyperLogLog++. Computes a merged (unioned) sketch and uses the fact that |A intersect B| = (|A| + |B|) - |A union B|.
+    Returns null if both sketches are null, but 0 if only one is
   """)
 case class HyperLogLogIntersectionCardinality(override val left: Expression, override val right: Expression) extends BinaryExpression with ExpectsInputTypes with CodegenFallback {
 
@@ -421,16 +428,30 @@ case class HyperLogLogIntersectionCardinality(override val left: Expression, ove
 
   override def dataType: DataType = LongType
 
-  override def nullSafeEval(input1: Any, input2: Any): Any = {
-    val leftHLL = HyperLogLogPlus.Builder.build(input1.asInstanceOf[Array[Byte]])
-    val rightHLL = HyperLogLogPlus.Builder.build(input2.asInstanceOf[Array[Byte]])
+  override def nullable: Boolean = left.nullable && right.nullable
 
-    val leftCount = leftHLL.cardinality()
-    val rightCount = rightHLL.cardinality()
-    leftHLL.addAll(rightHLL)
-    val unionCount = leftHLL.cardinality()
+  override def eval(input: InternalRow): Any = {
+    val leftValue = left.eval(input)
+    val rightValue = right.eval(input)
 
-    (leftCount + rightCount) - unionCount
+    if (leftValue != null && rightValue != null) {
+      val leftHLL = HyperLogLogPlus.Builder.build(leftValue.asInstanceOf[Array[Byte]])
+      val rightHLL = HyperLogLogPlus.Builder.build(rightValue.asInstanceOf[Array[Byte]])
+
+      val leftCount = leftHLL.cardinality()
+      val rightCount = rightHLL.cardinality()
+      leftHLL.addAll(rightHLL)
+      val unionCount = leftHLL.cardinality()
+
+      // guarantee a non-negative result despite the approximate nature of the counts
+      math.max((leftCount + rightCount) - unionCount, 0L)
+    } else {
+      if (leftValue != null || rightValue != null) {
+        0L
+      } else {
+        null
+      }
+    }
   }
 
   override def prettyName: String = "hll_intersect_cardinality"
@@ -506,6 +527,7 @@ trait HLLFunctions extends WithHelper {
   def hll_row_merge(es: Column*): Column = withExpr {
     HyperLogLogRowMerge(es.map(_.expr))
   }
+
   // split arguments to avoid collision w/ above after erasure
   def hll_row_merge(columnName: String, columnNames: String*): Column =
     hll_row_merge((columnName +: columnNames).map(col): _*)

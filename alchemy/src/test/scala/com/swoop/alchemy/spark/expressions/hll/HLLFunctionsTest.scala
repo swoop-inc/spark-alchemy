@@ -223,7 +223,7 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
 
   "HyperLogLog row merge function" should {
     // @todo merge tests with grouping
-    "estimate cardinality correctly" in {
+    "estimate cardinality correctly, with nulls" in {
       import spark.implicits._
 
       val df = spark.createDataset[Data3](Seq[Data3](
@@ -237,7 +237,7 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
       val results = df
         .select(hll_init('c1).as('c1), hll_init('c2).as('c2), hll_init('c3).as('c3))
         .select(hll_cardinality(hll_row_merge('c1, 'c2, 'c3)))
-        .na.fill(-1)
+        .na.fill(-1L)
         .as[Long]
         .head(5)
         .toSeq
@@ -262,10 +262,32 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
       val results = df
         .select(hll_init_agg('c1).as('c1), hll_init_agg('c2).as('c2), hll_init_agg('c3).as('c3))
         .select(hll_intersect_cardinality('c1, 'c2), hll_intersect_cardinality('c2, 'c3))
-        .as[(Long,Long)]
+        .as[(Long, Long)]
         .head()
 
       results should be((5, 0))
+    }
+
+    "handle nulls correctly" in {
+      import spark.implicits._
+
+      val df = spark.createDataset[Data3](Seq[Data3](
+        Data3("a", null, null),
+        Data3("b", null, null),
+        Data3("c", null, null),
+        Data3("d", null, null),
+        Data3("e", null, null)
+      ))
+
+      val results = df
+        .select(hll_init_agg('c1).as('c1), hll_init_agg('c2).as('c2), hll_init_agg('c3).as('c3))
+        .select(hll_intersect_cardinality('c1, 'c2), hll_intersect_cardinality('c2, 'c3))
+        .na.fill(-1L)
+        .as[(Long, Long)]
+        .head()
+
+      println(results)
+      results should be((0, -1))
     }
   }
 }
