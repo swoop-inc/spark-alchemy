@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>HyperLogLogCardinality - com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality</title>
-          <meta name="description" content="HyperLogLogCardinality - com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality" />
-          <meta name="keywords" content="HyperLogLogCardinality com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality" />
+          <title>HyperLogLogRowMerge - com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge</title>
+          <meta name="description" content="HyperLogLogRowMerge - com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge" />
+          <meta name="keywords" content="HyperLogLogRowMerge com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../../index.html';
-            var hash = 'com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality';
+            var hash = 'com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -30,10 +30,10 @@
       <div id="definition">
         <img alt="Class" src="../../../../../../lib/class_big.png" />
         <p id="owner"><a href="../../../../../package.html" class="extype" name="com">com</a>.<a href="../../../../package.html" class="extype" name="com.swoop">swoop</a>.<a href="../../../package.html" class="extype" name="com.swoop.alchemy">alchemy</a>.<a href="../../package.html" class="extype" name="com.swoop.alchemy.spark">spark</a>.<a href="../package.html" class="extype" name="com.swoop.alchemy.spark.expressions">expressions</a>.<a href="package.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll">hll</a></p>
-        <h1>HyperLogLogCardinality</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>HyperLogLogRowMerge</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="com.swoop.alchemy.spark.expressions.hll">package hll</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -45,17 +45,16 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">HyperLogLogCardinality</span><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <span class="name">HyperLogLogRowMerge</span><span class="params">(<span name="children">children: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>Returns the estimated cardinality of an HLL++ &quot;sketch&quot;
-</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>HLL++ &quot;sketch&quot;</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version merges multiple &quot;sketches&quot; in one row into a single field.</p></div><dl class="paramcmts block"><dt class="param">children</dt><dd class="cmt"><p>&quot;sketch&quot; row fields to merge</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@ExpressionDescription</span><span class="args">()</span>
               
-        </dd></dl><div class="toggleContainer block">
+        </dd><dt>See also</dt><dd><span class="cmt"><p>HyperLogLogMerge</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>], <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>], <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -73,7 +72,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality"><span>HyperLogLogCardinality</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback"><span>CodegenFallback</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes"><span>ExpectsInputTypes</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression"><span>UnaryExpression</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.Expression"><span>Expression</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge"><span>HyperLogLogRowMerge</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback"><span>CodegenFallback</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes"><span>ExpectsInputTypes</span></li><li class="in" name="org.apache.spark.sql.catalyst.expressions.Expression"><span>Expression</span></li><li class="in" name="org.apache.spark.sql.catalyst.trees.TreeNode"><span>TreeNode</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
                 <span class="filtertype">Implicitly<br />
@@ -97,23 +96,23 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(child:org.apache.spark.sql.catalyst.expressions.Expression):com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality"></a>
-      <a id="&lt;init&gt;:HyperLogLogCardinality"></a>
+              <ol><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]):com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge"></a>
+      <a id="&lt;init&gt;:HyperLogLogRowMerge"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HyperLogLogCardinality</span><span class="params">(<span name="child">child: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span>
+        <span class="name">HyperLogLogRowMerge</span><span class="params">(<span name="children">children: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@&lt;init&gt;(child:org.apache.spark.sql.catalyst.expressions.Expression):com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@&lt;init&gt;(children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]):com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>HLL++ &quot;sketch&quot;</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">children</dt><dd class="cmt"><p>&quot;sketch&quot; row fields to merge</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -135,7 +134,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -152,7 +151,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@##():Int" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@##():Int" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -169,34 +168,34 @@
         <span title="gt4s: $plus" class="implicit">+</span><span class="params">(<span name="other">other: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@+(other:String):String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@+(other:String):String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method any2stringadd in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method any2stringadd in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>any2stringadd</dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#-&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="-&gt;[B](y:B):(A,B)"></a>
-      <a id="-&gt;[B](B):(HyperLogLogCardinality,B)"></a>
+      <a id="-&gt;[B](B):(HyperLogLogRowMerge,B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>, <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
+        <span title="gt4s: $minus$greater" class="implicit">-&gt;</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>, <span class="extype" name="scala.Predef.ArrowAssoc.-&gt;.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@-&gt;[B](y:B):(A,B)" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -214,7 +213,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -231,7 +230,7 @@
         <span class="name">apply</span><span class="params">(<span name="number">number: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@apply(number:Int):org.apache.spark.sql.catalyst.trees.TreeNode[_]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@apply(number:Int):org.apache.spark.sql.catalyst.trees.TreeNode[_]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -248,7 +247,7 @@
         <span class="name">argString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@argString:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@argString:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -265,7 +264,7 @@
         <span class="name">asCode</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@asCode:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@asCode:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -282,7 +281,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -299,7 +298,7 @@
         <span class="name">canonicalized</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@canonicalized:org.apache.spark.sql.catalyst.expressions.Expression" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@canonicalized:org.apache.spark.sql.catalyst.expressions.Expression" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -316,45 +315,28 @@
         <span class="name">checkInputDataTypes</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.analysis.TypeCheckResult">TypeCheckResult</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@checkInputDataTypes():org.apache.spark.sql.catalyst.analysis.TypeCheckResult" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@checkInputDataTypes():org.apache.spark.sql.catalyst.analysis.TypeCheckResult" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExpectsInputTypes → Expression</dd></dl></div>
-    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#child" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="child:org.apache.spark.sql.catalyst.expressions.Expression"></a>
-      <a id="child:Expression"></a>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#children" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
+      <a id="children:Seq[Expression]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">child</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@child:org.apache.spark.sql.catalyst.expressions.Expression" title="Permalink" target="_top">
-        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">HLL++ &quot;sketch&quot;</p><div class="fullcomment"><div class="comment cmt"><p>HLL++ &quot;sketch&quot;</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> → UnaryExpression</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#children" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]"></a>
-      <a id="children:Seq[Expression]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
         <span class="name">children</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@children:Seq[org.apache.spark.sql.catalyst.expressions.Expression]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryExpression → TreeNode</dd></dl></div>
+      <p class="shortcomment cmt">&quot;sketch&quot; row fields to merge</p><div class="fullcomment"><div class="comment cmt"><p>&quot;sketch&quot; row fields to merge</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → TreeNode</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.expressions.Expression#childrenResolved" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="childrenResolved:Boolean"></a>
       <a id="childrenResolved:Boolean"></a>
@@ -367,7 +349,7 @@
         <span class="name">childrenResolved</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@childrenResolved:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@childrenResolved:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -384,7 +366,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@clone():Object" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@clone():Object" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -407,7 +389,7 @@
         <span class="name">collect</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="pf">pf: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.collect.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.collect.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@collect[B](pf:PartialFunction[BaseType,B]):Seq[B]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@collect[B](pf:PartialFunction[BaseType,B]):Seq[B]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -424,7 +406,7 @@
         <span class="name">collectFirst</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="pf">pf: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.collectFirst.B">B</span>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.collectFirst.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@collectFirst[B](pf:PartialFunction[BaseType,B]):Option[B]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@collectFirst[B](pf:PartialFunction[BaseType,B]):Option[B]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -441,7 +423,7 @@
         <span class="name">collectLeaves</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@collectLeaves():Seq[BaseType]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@collectLeaves():Seq[BaseType]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -458,12 +440,12 @@
         <span class="name">containsChild</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[_]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@containsChild:Set[org.apache.spark.sql.catalyst.trees.TreeNode[_]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@containsChild:Set[org.apache.spark.sql.catalyst.trees.TreeNode[_]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#dataType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#dataType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="dataType:org.apache.spark.sql.types.DataType"></a>
       <a id="dataType:DataType"></a>
       <h4 class="signature">
@@ -475,28 +457,11 @@
         <span class="name">dataType</span><span class="result">: <span class="extype" name="org.apache.spark.sql.types.DataType">DataType</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@dataType:org.apache.spark.sql.types.DataType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@dataType:org.apache.spark.sql.types.DataType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> → Expression</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#defineCodeGen" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="defineCodeGen(ctx:&lt;?&gt;,ev:&lt;?&gt;,f:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode"></a>
-      <a id="defineCodeGen(CodegenContext,ExprCode,(String)⇒String):ExprCode"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">defineCodeGen</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext">CodegenContext</span></span>, <span name="ev">ev: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>, <span name="f">f: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@defineCodeGen(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext,ev:org.apache.spark.sql.catalyst.expressions.codegen.ExprCode,f:String=&gt;String):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
-        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>UnaryExpression</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → Expression</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.expressions.Expression#deterministic" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="deterministic:Boolean"></a>
       <a id="deterministic:Boolean"></a>
@@ -509,7 +474,7 @@
         <span class="name">deterministic</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@deterministic:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@deterministic:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -526,93 +491,93 @@
         <span class="name">doGenCode</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext">CodegenContext</span></span>, <span name="ev">ev: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@doGenCode(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext,ev:org.apache.spark.sql.catalyst.expressions.codegen.ExprCode):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@doGenCode(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext,ev:org.apache.spark.sql.catalyst.expressions.codegen.ExprCode):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>CodegenFallback → Expression</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring((HyperLogLogCardinality)⇒Boolean,⇒Any):HyperLogLogCardinality"></a>
+      <a id="ensuring((HyperLogLogRowMerge)⇒Boolean,⇒Any):HyperLogLogRowMerge"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a></span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@ensuring(cond:A=&gt;Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:A=&gt;Boolean):A"></a>
-      <a id="ensuring((HyperLogLogCardinality)⇒Boolean):HyperLogLogCardinality"></a>
+      <a id="ensuring((HyperLogLogRowMerge)⇒Boolean):HyperLogLogRowMerge"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a></span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@ensuring(cond:A=&gt;Boolean):A" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean,msg:=&gt;Any):A"></a>
-      <a id="ensuring(Boolean,⇒Any):HyperLogLogCardinality"></a>
+      <a id="ensuring(Boolean,⇒Any):HyperLogLogRowMerge"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a></span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="msg">msg: ⇒ <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@ensuring(cond:Boolean,msg:=&gt;Any):A" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.Predef.Ensuring#ensuring" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ensuring(cond:Boolean):A"></a>
-      <a id="ensuring(Boolean):HyperLogLogCardinality"></a>
+      <a id="ensuring(Boolean):HyperLogLogRowMerge"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a></span>
+        <span class="implicit">ensuring</span><span class="params">(<span name="cond">cond: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@ensuring(cond:Boolean):A" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@ensuring(cond:Boolean):A" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method Ensuring in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method Ensuring in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>Ensuring</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -627,12 +592,12 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#eval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#eval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eval(input:org.apache.spark.sql.catalyst.InternalRow):Any"></a>
       <a id="eval(InternalRow):Any"></a>
       <h4 class="signature">
@@ -644,11 +609,11 @@
         <span class="name">eval</span><span class="params">(<span name="input">input: <span class="extype" name="org.apache.spark.sql.catalyst.InternalRow">InternalRow</span></span>)</span><span class="result">: <span class="extype" name="scala.Any">Any</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@eval(input:org.apache.spark.sql.catalyst.InternalRow):Any" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@eval(input:org.apache.spark.sql.catalyst.InternalRow):Any" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryExpression → Expression</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → Expression</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#fastEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fastEquals(other:org.apache.spark.sql.catalyst.trees.TreeNode[_]):Boolean"></a>
       <a id="fastEquals(TreeNode[_]):Boolean"></a>
@@ -661,7 +626,7 @@
         <span class="name">fastEquals</span><span class="params">(<span name="other">other: <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[_]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@fastEquals(other:org.apache.spark.sql.catalyst.trees.TreeNode[_]):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@fastEquals(other:org.apache.spark.sql.catalyst.trees.TreeNode[_]):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -678,7 +643,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -701,7 +666,7 @@
         <span class="name">find</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Option" class="extype" target="_top">Option</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@find(f:BaseType=&gt;Boolean):Option[BaseType]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@find(f:BaseType=&gt;Boolean):Option[BaseType]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -718,7 +683,7 @@
         <span class="name">flatArguments</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="scala.Any">Any</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@flatArguments:Iterator[Any]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@flatArguments:Iterator[Any]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -735,12 +700,12 @@
         <span class="name">flatMap</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.flatMap.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.flatMap.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@flatMap[A](f:BaseType=&gt;TraversableOnce[A]):Seq[A]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@flatMap[A](f:BaseType=&gt;TraversableOnce[A]):Seq[A]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#foldable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#foldable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foldable:Boolean"></a>
       <a id="foldable:Boolean"></a>
       <h4 class="signature">
@@ -752,11 +717,11 @@
         <span class="name">foldable</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@foldable:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@foldable:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryExpression → Expression</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → Expression</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#foreach" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="foreach(f:BaseType=&gt;Unit):Unit"></a>
       <a id="foreach((Expression)⇒Unit):Unit"></a>
@@ -769,7 +734,7 @@
         <span class="name">foreach</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@foreach(f:BaseType=&gt;Unit):Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@foreach(f:BaseType=&gt;Unit):Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -786,7 +751,7 @@
         <span class="name">foreachUp</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@foreachUp(f:BaseType=&gt;Unit):Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@foreachUp(f:BaseType=&gt;Unit):Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -803,13 +768,13 @@
         <span class="implicit">formatted</span><span class="params">(<span name="fmtstr">fmtstr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@formatted(fmtstr:String):String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@formatted(fmtstr:String):String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method StringFormat in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method StringFormat in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>StringFormat</dd><dt>Annotations</dt><dd>
                 <span class="name">@inline</span><span class="args">()</span>
@@ -827,7 +792,7 @@
         <span class="name">genCode</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext">CodegenContext</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@genCode(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@genCode(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -844,7 +809,7 @@
         <span class="name">generateTreeString</span><span class="params">(<span name="depth">depth: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="lastChildren">lastChildren: <span class="extype" name="scala.Seq">Seq</span>[<a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a>]</span>, <span name="builder">builder: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>, <span name="verbose">verbose: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="prefix">prefix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="addSuffix">addSuffix: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@generateTreeString(depth:Int,lastChildren:Seq[Boolean],builder:StringBuilder,verbose:Boolean,prefix:String,addSuffix:Boolean):StringBuilder" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@generateTreeString(depth:Int,lastChildren:Seq[Boolean],builder:StringBuilder,verbose:Boolean,prefix:String,addSuffix:Boolean):StringBuilder" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -861,7 +826,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -878,7 +843,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -895,12 +860,12 @@
         <span class="name">innerChildren</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode">TreeNode</span>[_]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@innerChildren:Seq[org.apache.spark.sql.catalyst.trees.TreeNode[_]]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@innerChildren:Seq[org.apache.spark.sql.catalyst.trees.TreeNode[_]]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#inputTypes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#inputTypes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputTypes:Seq[org.apache.spark.sql.types.DataType]"></a>
       <a id="inputTypes:Seq[DataType]"></a>
       <h4 class="signature">
@@ -912,11 +877,11 @@
         <span class="name">inputTypes</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.types.DataType">DataType</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@inputTypes:Seq[org.apache.spark.sql.types.DataType]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@inputTypes:Seq[org.apache.spark.sql.types.DataType]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> → ExpectsInputTypes</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → ExpectsInputTypes</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -929,7 +894,7 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -946,7 +911,7 @@
         <span class="name">jsonFields</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="org.json4s.JsonAST.JField">JField</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@jsonFields:List[org.json4s.JsonAST.JField]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@jsonFields:List[org.json4s.JsonAST.JField]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -963,7 +928,7 @@
         <span class="name">makeCopy</span><span class="params">(<span name="newArgs">newArgs: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Array" class="extype" target="_top">Array</a>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@makeCopy(newArgs:Array[AnyRef]):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@makeCopy(newArgs:Array[AnyRef]):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -980,7 +945,7 @@
         <span class="name">map</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.map.A">A</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.map.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@map[A](f:BaseType=&gt;A):Seq[A]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@map[A](f:BaseType=&gt;A):Seq[A]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -997,7 +962,7 @@
         <span class="name">mapChildren</span><span class="params">(<span name="f">f: (<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>) ⇒ <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@mapChildren(f:BaseType=&gt;BaseType):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@mapChildren(f:BaseType=&gt;BaseType):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1014,7 +979,7 @@
         <span class="name">mapProductIterator</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Any">Any</span>) ⇒ <span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator.B">B</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.reflect.ClassTag" class="extype" target="_top">ClassTag</a>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator.B">B</span>]</span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Array" class="extype" target="_top">Array</a>[<span class="extype" name="org.apache.spark.sql.catalyst.trees.TreeNode.mapProductIterator.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@mapProductIterator[B](f:Any=&gt;B)(implicitevidence$1:scala.reflect.ClassTag[B]):Array[B]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@mapProductIterator[B](f:Any=&gt;B)(implicitevidence$1:scala.reflect.ClassTag[B]):Array[B]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1031,7 +996,7 @@
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1048,7 +1013,7 @@
         <span class="name">nodeName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@nodeName:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@nodeName:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1065,7 +1030,7 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@notify():Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1082,46 +1047,12 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#nullSafeCodeGen" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="nullSafeCodeGen(ctx:&lt;?&gt;,ev:&lt;?&gt;,f:&lt;?&gt;):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode"></a>
-      <a id="nullSafeCodeGen(CodegenContext,ExprCode,(String)⇒String):ExprCode"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">nullSafeCodeGen</span><span class="params">(<span name="ctx">ctx: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext">CodegenContext</span></span>, <span name="ev">ev: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>, <span name="f">f: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.ExprCode">ExprCode</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@nullSafeCodeGen(ctx:org.apache.spark.sql.catalyst.expressions.codegen.CodegenContext,ev:org.apache.spark.sql.catalyst.expressions.codegen.ExprCode,f:String=&gt;String):org.apache.spark.sql.catalyst.expressions.codegen.ExprCode" title="Permalink" target="_top">
-        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>UnaryExpression</dd></dl></div>
-    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#nullSafeEval" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="nullSafeEval(input:Any):Long"></a>
-      <a id="nullSafeEval(Any):Long"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">nullSafeEval</span><span class="params">(<span name="input">input: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Long" class="extype" target="_top">Long</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@nullSafeEval(input:Any):Long" title="Permalink" target="_top">
-        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> → UnaryExpression</dd></dl></div>
-    </li><li name="org.apache.spark.sql.catalyst.expressions.UnaryExpression#nullable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#nullable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="nullable:Boolean"></a>
       <a id="nullable:Boolean"></a>
       <h4 class="signature">
@@ -1133,11 +1064,11 @@
         <span class="name">nullable</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@nullable:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@nullable:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>UnaryExpression → Expression</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → Expression</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.trees.TreeNode#numberedTreeString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="numberedTreeString:String"></a>
       <a id="numberedTreeString:String"></a>
@@ -1150,7 +1081,7 @@
         <span class="name">numberedTreeString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@numberedTreeString:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@numberedTreeString:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1167,7 +1098,7 @@
         <span class="name">origin</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.trees.Origin">Origin</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@origin:org.apache.spark.sql.catalyst.trees.Origin" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@origin:org.apache.spark.sql.catalyst.trees.Origin" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1184,7 +1115,7 @@
         <span class="name">otherCopyArgs</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.AnyRef">AnyRef</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@otherCopyArgs:Seq[AnyRef]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@otherCopyArgs:Seq[AnyRef]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1201,7 +1132,7 @@
         <span class="name">p</span><span class="params">(<span name="number">number: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@p(number:Int):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@p(number:Int):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1218,12 +1149,12 @@
         <span class="name">prettyJson</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@prettyJson:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@prettyJson:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
-    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality#prettyName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge#prettyName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="prettyName:String"></a>
       <a id="prettyName:String"></a>
       <h4 class="signature">
@@ -1235,11 +1166,11 @@
         <span class="name">prettyName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@prettyName:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@prettyName:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> → Expression</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> → Expression</dd></dl></div>
     </li><li name="org.apache.spark.sql.catalyst.expressions.Expression#references" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="references:org.apache.spark.sql.catalyst.expressions.AttributeSet"></a>
       <a id="references:AttributeSet"></a>
@@ -1252,7 +1183,7 @@
         <span class="name">references</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.AttributeSet">AttributeSet</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@references:org.apache.spark.sql.catalyst.expressions.AttributeSet" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@references:org.apache.spark.sql.catalyst.expressions.AttributeSet" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1269,7 +1200,7 @@
         <span class="name">resolved</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@resolved:Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@resolved:Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1286,7 +1217,7 @@
         <span class="name">semanticEquals</span><span class="params">(<span name="other">other: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@semanticEquals(other:org.apache.spark.sql.catalyst.expressions.Expression):Boolean" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@semanticEquals(other:org.apache.spark.sql.catalyst.expressions.Expression):Boolean" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1303,7 +1234,7 @@
         <span class="name">semanticHash</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@semanticHash():Int" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@semanticHash():Int" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1320,7 +1251,7 @@
         <span class="name">simpleString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@simpleString:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@simpleString:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1337,7 +1268,7 @@
         <span class="name">sql</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@sql:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@sql:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1354,7 +1285,7 @@
         <span class="name">stringArgs</span><span class="result">: <span class="extype" name="scala.Iterator">Iterator</span>[<span class="extype" name="scala.Any">Any</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@stringArgs:Iterator[Any]" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@stringArgs:Iterator[Any]" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1371,7 +1302,7 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1388,7 +1319,7 @@
         <span class="name">toJSON</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@toJSON:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@toJSON:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1405,7 +1336,7 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@toString():String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@toString():String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1422,7 +1353,7 @@
         <span class="name">transform</span><span class="params">(<span name="rule">rule: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@transform(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@transform(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1439,7 +1370,7 @@
         <span class="name">transformDown</span><span class="params">(<span name="rule">rule: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@transformDown(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@transformDown(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1456,7 +1387,7 @@
         <span class="name">transformUp</span><span class="params">(<span name="rule">rule: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.PartialFunction" class="extype" target="_top">PartialFunction</a>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>, <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@transformUp(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@transformUp(rule:PartialFunction[BaseType,BaseType]):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1473,7 +1404,7 @@
         <span class="name">treeString</span><span class="params">(<span name="verbose">verbose: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>, <span name="addSuffix">addSuffix: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@treeString(verbose:Boolean,addSuffix:Boolean):String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@treeString(verbose:Boolean,addSuffix:Boolean):String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1490,7 +1421,7 @@
         <span class="name">treeString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@treeString:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@treeString:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1507,7 +1438,7 @@
         <span class="name">verboseString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@verboseString:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@verboseString:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1524,7 +1455,7 @@
         <span class="name">verboseStringWithSuffix</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@verboseStringWithSuffix:String" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@verboseStringWithSuffix:String" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1541,7 +1472,7 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@wait():Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1564,7 +1495,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1587,7 +1518,7 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1610,30 +1541,30 @@
         <span class="name">withNewChildren</span><span class="params">(<span name="newChildren">newChildren: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@withNewChildren(newChildren:Seq[BaseType]):BaseType" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@withNewChildren(newChildren:Seq[BaseType]):BaseType" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TreeNode</dd></dl></div>
     </li><li name="scala.Predef.ArrowAssoc#→" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="→[B](y:B):(A,B)"></a>
-      <a id="→[B](B):(HyperLogLogCardinality,B)"></a>
+      <a id="→[B](B):(HyperLogLogRowMerge,B)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>, <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
+        <span title="gt4s: $u2192" class="implicit">→</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="y">y: <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span></span>)</span><span class="result">: (<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>, <span class="extype" name="scala.Predef.ArrowAssoc.→.B">B</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality@→[B](y:B):(A,B)" title="Permalink" target="_top">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge@→[B](y:B):(A,B)" title="Permalink" target="_top">
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt class="implicit">Implicit information</dt><dd>
-            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to
-            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>] performed by method ArrowAssoc in scala.Predef.
+            This member is added by an implicit conversion from <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to
+            <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>] performed by method ArrowAssoc in scala.Predef.
             
           </dd><dt>Definition Classes</dt><dd>ArrowAssoc</dd></dl></div>
     </li></ol>
@@ -1653,8 +1584,6 @@
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span></h3>
-            </div><div class="parent" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">
-              <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.expressions.UnaryExpression">UnaryExpression</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.expressions.Expression">
               <h3>Inherited from <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></h3>
             </div><div class="parent" name="org.apache.spark.sql.catalyst.trees.TreeNode">
@@ -1670,19 +1599,19 @@
             </div>
         <div class="conversion" name="scala.Predef.any2stringadd">
               <h3>Inherited by implicit conversion any2stringadd from
-                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>]
+                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to <span class="extype" name="scala.Predef.any2stringadd">any2stringadd</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.StringFormat">
               <h3>Inherited by implicit conversion StringFormat from
-                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>]
+                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to <span class="extype" name="scala.Predef.StringFormat">StringFormat</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.Ensuring">
               <h3>Inherited by implicit conversion Ensuring from
-                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>]
+                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to <span class="extype" name="scala.Predef.Ensuring">Ensuring</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>]
               </h3>
             </div><div class="conversion" name="scala.Predef.ArrowAssoc">
               <h3>Inherited by implicit conversion ArrowAssoc from
-                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a> to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogCardinality">HyperLogLogCardinality</a>]
+                <a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a> to <span class="extype" name="scala.Predef.ArrowAssoc">ArrowAssoc</span>[<a href="" class="extype" name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge">HyperLogLogRowMerge</a>]
               </h3>
             </div>
         </div>

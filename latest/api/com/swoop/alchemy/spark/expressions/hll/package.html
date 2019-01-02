@@ -140,7 +140,7 @@ it differentiates between different data types and accounts for nulls.
       </a>
     </span>
       <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>Returns the estimated cardinality of an HLL++ &quot;sketch&quot;
-</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>HLL+ &quot;sketch&quot;</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+</p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>HLL++ &quot;sketch&quot;</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@ExpressionDescription</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -300,6 +300,28 @@ All expression values treated as simple values.
       </a>
     </span>
       
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogIntersectionCardinality" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogIntersectionCardinalityextendsBinaryExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable"></a>
+      <a id="HyperLogLogIntersectionCardinality:HyperLogLogIntersectionCardinality"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogIntersectionCardinality.html"><span class="name">HyperLogLogIntersectionCardinality</span></a><span class="params">(<span name="left">left: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>, <span name="right">right: <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span></span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.BinaryExpression">BinaryExpression</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogIntersectionCardinalityextendsBinaryExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>Computes a merged (unioned) sketch and uses the fact that |A intersect B| = (|A| + |B|) - |A union B| to estimate
+the intersection cardinality of two HLL++ &quot;sketches&quot;.
+</p></div><dl class="paramcmts block"><dt class="param">left</dt><dd class="cmt"><p>HLL++ &quot;sketch&quot;</p></dd><dt class="param">right</dt><dd class="cmt"><p>HLL++ &quot;sketch&quot;</p></dd><dt>returns</dt><dd class="cmt"><p>the estimated intersection cardinality (0 if one sketch is null, but null if both are)</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd><dt>See also</dt><dd><span class="cmt"><p>HyperLogLogCardinality</p></span><span class="cmt"><p>HyperLogLogRowMerge</p></span></dd></dl></div>
     </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogMerge" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HyperLogLogMergeextendsTypedImperativeAggregate[Option[com.clearspring.analytics.stream.cardinality.HyperLogLogPlus]]withNullableSketchAggregationwithProductwithSerializable"></a>
       <a id="HyperLogLogMerge:HyperLogLogMerge"></a>
@@ -316,11 +338,31 @@ All expression values treated as simple values.
         <img src="../../../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version merges the &quot;sketches&quot; into a combined binary composable representation.
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version aggregates the &quot;sketches&quot; into a single merged &quot;sketch&quot; that represents the union of the constituents.
 </p></div><dl class="paramcmts block"><dt class="param">child</dt><dd class="cmt"><p>&quot;sketch&quot; to merge</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@ExpressionDescription</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogRowMerge" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HyperLogLogRowMergeextendsExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable"></a>
+      <a id="HyperLogLogRowMerge:HyperLogLogRowMerge"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="HyperLogLogRowMerge.html"><span class="name">HyperLogLogRowMerge</span></a><span class="params">(<span name="children">children: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span>]</span>)</span><span class="result"> extends <span class="extype" name="org.apache.spark.sql.catalyst.expressions.Expression">Expression</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.ExpectsInputTypes">ExpectsInputTypes</span> with <span class="extype" name="org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback">CodegenFallback</span> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.11.8/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../../index.html#com.swoop.alchemy.spark.expressions.hll.package@HyperLogLogRowMergeextendsExpressionwithExpectsInputTypeswithCodegenFallbackwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><div class="fullcomment"><div class="comment cmt"><p>HyperLogLog++ (HLL++) is a state of the art cardinality estimation algorithm.</p><p>This version merges multiple &quot;sketches&quot; in one row into a single field.</p></div><dl class="paramcmts block"><dt class="param">children</dt><dd class="cmt"><p>&quot;sketch&quot; row fields to merge</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ExpressionDescription</span><span class="args">()</span>
+              
+        </dd><dt>See also</dt><dd><span class="cmt"><p>HyperLogLogMerge</p></span></dd></dl></div>
     </li><li name="com.swoop.alchemy.spark.expressions.hll.HyperLogLogSimple" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="HyperLogLogSimpleextendsExpressionwithHyperLogLogInit"></a>
       <a id="HyperLogLogSimple:HyperLogLogSimple"></a>
