@@ -1,3 +1,8 @@
+branches:
+  except:
+    # Disabling travis-ci from building during migration to CircleCI
+    - /.*/
+
 language: scala
 
 sudo: false
@@ -8,11 +13,6 @@ addons:
   apt:
     packages:
     - curl
-
-branches:
-  except:
-    - gh-pages
-    - /^v[0-9]/
 
 cache:
   directories:

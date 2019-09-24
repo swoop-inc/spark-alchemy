@@ -10,6 +10,9 @@ val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
 
 val sparkVersion = "2.3.1"
 
+// https://bintray.com/swoop-inc/maven
+resolvers += Resolver.bintrayRepo("swoop-inc", "maven")
+
 lazy val alchemy = (project in file("."))
   .aggregate(test)
   .settings(

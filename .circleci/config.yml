@@ -1,0 +1,82 @@
+version: 2.1
+
+jobs:
+  build:
+    parameters:
+      create-release:
+        type: boolean
+        default: false
+
+    docker:
+      - image: circleci/openjdk:8u222-jdk-stretch
+
+    working_directory: ~/spark-alchemy
+
+    environment:
+      SBT_MEM_MB: 2048
+      TERM: dumb
+      AWS_REGION: us-east-1
+      SWOOP_VERSION_FILE: VERSION
+      SWOOP_RELEASE_BRANCH: release
+
+    steps:
+      - checkout
+
+      - run:
+          name: Define Environment Variables
+          command: |
+            mkdir -p $HOME/bin
+            echo 'export PATH="$HOME/bin:$PATH"' >> $BASH_ENV
+            echo 'export SWOOP_PROJECT_VERSION="$(grep -Po "\\d+.\\d+" $SWOOP_VERSION_FILE).$CIRCLE_BUILD_NUM"' >> $BASH_ENV
+            echo 'export SBT_OPTS="-Xms${SBT_MEM_MB}m -Xmx${SBT_MEM_MB}m -Xss128m -XX:+CMSClassUnloadingEnabled -XX:MaxMetaspaceSize=1024m"' >> $BASH_ENV
+            source $BASH_ENV
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "build.sbt" }}
+
+      # "cat /dev/null |" prevents sbt from running in interactive mode. One of many amazing
+      # hacks get sbt working in a sane manner.
+      - run:
+          name: sbt test
+          command: cat /dev/null | sbt test
+
+      - save_cache:
+          paths:
+            - ~/.m2
+            - ~/.ivy2/cache
+            - ~/.sbt
+          key: v1-dependencies--{{ checksum "build.sbt" }}
+
+      - store_test_results:
+          path: ~/spark-alchemy/target/test-reports
+
+      - store_artifacts:
+          path: ~/spark-alchemy/target/test-reports
+
+workflows:
+  version: 2
+  spark-alchemy-workflow:
+    # Structuring the workflow with the same job twice, except building off different branches
+    # and perform deployments only on the master branch. It's structured this way so that the
+    # CircleCI job shows the deployment and corresponding tests together in one unit,
+    # rather than being split up across multiple jobs.
+    jobs:
+      - build:
+          create-release: false
+          filters:
+            branches:
+              ignore:
+                - master
+
+                # Don't build branches/tags that match this regex. It's the convention used
+                # for tagging releases, which should be already tested before tagging.
+                - /^v[0-9]/
+                - gh-pages
+
+      - build:
+          create-release: true
+          filters:
+            branches:
+              only:
+                - master
