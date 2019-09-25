@@ -8,7 +8,7 @@ jobs:
         default: false
 
     docker:
-      - image: circleci/openjdk:8u222-jdk-stretch
+      - image: swoopinc/spark-alchemy:adoptopenjdk-8u222-circleci-201909250040
 
     working_directory: ~/spark-alchemy
 
@@ -17,7 +17,6 @@ jobs:
       TERM: dumb
       AWS_REGION: us-east-1
       SWOOP_VERSION_FILE: VERSION
-      SWOOP_RELEASE_BRANCH: release
 
     steps:
       - checkout
@@ -46,7 +45,7 @@ jobs:
             - ~/.m2
             - ~/.ivy2/cache
             - ~/.sbt
-          key: v1-dependencies--{{ checksum "build.sbt" }}
+          key: v1-dependencies-{{ checksum "build.sbt" }}
 
       - store_test_results:
           path: ~/spark-alchemy/target/test-reports
@@ -67,7 +66,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - master
+                - release
 
                 # Don't build branches/tags that match this regex. It's the convention used
                 # for tagging releases, which should be already tested before tagging.
@@ -79,4 +78,4 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - release
