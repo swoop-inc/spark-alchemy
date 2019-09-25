@@ -6,39 +6,85 @@
 # https://github.com/AdoptOpenJDK/openjdk-docker/blob/4dd8db3c0fb30281ead0baa706800a605d3ebbe1/8/jdk/ubuntu/Dockerfile.hotspot.releases.full
 # https://github.com/CircleCI-Public/circleci-dockerfiles/blob/master/openjdk/images/8u222-jdk-stretch/Dockerfile
 
-FROM adoptopenjdk:8u222-b10-jdk-hotspot-bionic
+FROM adoptopenjdk/openjdk8:jdk8u222-b10-alpine-slim
 
-# make Apt non-interactive
-RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci \
-  && echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90circleci
+RUN echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
+    && echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories \
+    && echo @edge http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories \
+    && apk upgrade --update-cache --available
 
-ENV DEBIAN_FRONTEND=noninteractive
+ENV RUBYOPT="W0" \
+  LANG=en_US.UTF-8 \
+  LANGUAGE=en_US.UTF-8
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-    git mercurial xvfb apt \
-    locales sudo openssh-client ca-certificates tar gzip parallel \
-    net-tools netcat unzip zip bzip2 gnupg curl wget make
+ENV BUILD_PACKAGES=" \
+  build-base \
+  curl-dev \
+  gdbm \
+  harfbuzz@edge \
+  icu-dev \
+  libc-dev \
+  libffi-dev \
+  libxml2-dev \
+  libxslt-dev \
+  linux-headers \
+  nss@edge \
+  ruby-dev \
+  tzdata \
+  zlib-dev \
+  "
+
+ENV RUNTIME_PACKAGES="\
+  bash \
+  ca-certificates \
+  curl \
+  dockerize@edge \
+  file \
+  git \
+  gzip \
+  less \
+  libcurl \
+  libffi \
+  libgcrypt \
+  ncurses \
+  netcat-openbsd \
+  openssh \
+  openssl \
+  parallel \
+  ruby \
+  sudo \
+  tar \
+  unzip \
+  wget \
+  which \
+  zip \
+  "
+
+RUN apk --update --upgrade --no-cache add $BUILD_PACKAGES $RUNTIME_PACKAGES
 
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
 
-# Use unicode
-RUN update-locale LANG="en_US.UTF-8"
-ENV LANG=en_US.UTF-8
-
-RUN groupadd --gid 3434 circleci \
-  && useradd --uid 3434 --gid circleci --shell /bin/bash --create-home circleci \
-  && echo 'circleci ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-circleci \
-  && echo 'Defaults    env_keep += "DEBIAN_FRONTEND"' >> /etc/sudoers.d/env_keep
+RUN addgroup --gid 3434 circleci \
+  && adduser --uid 3434 --ingroup circleci --shell /bin/bash --disabled-password circleci \
+  && echo 'circleci ALL=NOPASSWD: ALL' >> /etc/sudoers.d/50-circleci
 
 # BEGIN IMAGE CUSTOMIZATIONS
 
-# Install openjfx
-RUN apt-get install -y --no-install-recommends openjfx
+# Not sure why but jekyll requires "json" and "bigdecimal" to be installed manually
+RUN gem update --system --no-document \
+  && gem env \
+  && gem install sass jekyll json bigdecimal --no-document
+
+# smoke test with path
+RUN sass --version \
+  && jekyll --version
 
 # Install sbt from https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/sbt-latest.tgz
-RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/sbt.tgz https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/sbt-latest.tgz   && tar -xzf /tmp/sbt.tgz -C /opt/   && rm /tmp/sbt.tgz   && /opt/sbt/bin/sbt sbtVersion
+RUN curl --silent --show-error --location --fail --retry 3 --output /tmp/sbt.tgz https://circle-downloads.s3.amazonaws.com/circleci-images/cache/linux-amd64/sbt-latest.tgz \
+  && tar -xzf /tmp/sbt.tgz -C /opt/ \
+  && rm /tmp/sbt.tgz \
+  && /opt/sbt/bin/sbt sbtVersion
 
 # Update PATH for Java tools
 ENV PATH="/opt/sbt/bin:$PATH"
@@ -46,19 +92,17 @@ ENV PATH="/opt/sbt/bin:$PATH"
 # smoke test with path
 RUN sbt sbtVersion
 
-# Add build-essential
-RUN apt-get install -y --no-install-recommends build-essential
-
-RUN apt-get install -y --no-install-recommends ruby-full rubygems autogen autoconf libtool make \
-  && gem update --system \
-  && gem env \
-  && gem install sass jekyll --no-document
+# Clean up
+RUN gem cleanup \
+  && rm -rf /usr/lib/ruby/gems/*/cache/* \
+        /var/cache/apk/* \
+        /tmp/* \
+        /var/tmp/*
 
 # END IMAGE CUSTOMIZATIONS
 
-RUN rm -rf /var/lib/apt/lists/*
-
 USER circleci
+WORKDIR /home/circleci
 ENV PATH /home/circleci/.local/bin:/home/circleci/bin:${PATH}
 
 CMD ["/bin/bash"]

@@ -80,6 +80,9 @@ micrositeGithubOwner := "swoop-inc"
 micrositeGithubRepo := "spark-alchemy"
 micrositeHighlightTheme := "tomorrow"
 
+micrositePushSiteWith := GitHub4s
+micrositeGithubToken := sys.env.get("GITHUB_TOKEN")
+
 // SBT header settings
 ThisBuild / organizationName := "Swoop, Inc"
 ThisBuild / startYear := Some(2018)

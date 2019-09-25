@@ -8,7 +8,7 @@ jobs:
         default: false
 
     docker:
-      - image: swoopinc/spark-alchemy:adoptopenjdk-8u222-circleci-201909250040
+      - image: swoopinc/spark-alchemy:adoptopenjdk-8u222-alpine-circleci-201909251640
 
     working_directory: ~/spark-alchemy
 
