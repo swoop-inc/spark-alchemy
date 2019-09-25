@@ -41,6 +41,7 @@ ENV RUNTIME_PACKAGES="\
   dockerize@edge \
   file \
   git \
+  grep \
   gzip \
   less \
   libcurl \
