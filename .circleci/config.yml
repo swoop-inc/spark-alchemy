@@ -40,6 +40,34 @@ jobs:
           name: sbt test
           command: cat /dev/null | sbt test
 
+      - run:
+          name: Set $SWOOP_PROJECT_VERSION in $SWOOP_VERSION_FILE
+          command: echo "${SWOOP_PROJECT_VERSION}" | tee $SWOOP_VERSION_FILE
+
+      - when:
+          condition: << parameters.create-release >>
+          steps:
+            - run:
+                name: sbt publish
+                command: cat /dev/null | sbt publish
+
+            - run:
+                name: sbt publishMicrosite
+                command: cat /dev/null | sbt publishMicrosite
+
+            - run:
+                name: Create Github Release
+                command: |
+                  if [ ${CIRCLE_PULL_REQUEST:-""} = "" ]; then
+                    curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${GITHUB_TOKEN}" -X POST "https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/releases" -d '{
+                      "tag_name": "v'"${SWOOP_PROJECT_VERSION}"'",
+                      "target_commitish": "'"${CIRCLE_SHA1}"'",
+                      "name": "v'"${SWOOP_PROJECT_VERSION}"'",
+                      "body": "'"${CIRCLE_BUILD_URL}"'",
+                      "prerelease": false
+                    }'
+                  fi
+
       - save_cache:
           paths:
             - ~/.m2
