@@ -70,8 +70,8 @@ trait NativeFunctionRegistration extends FunctionRegistration {
   }
 
   /**
-    * Creates an [[ExpressionInfo]] for the function as defined by expression T using the given name.
-    */
+   * Creates an [[ExpressionInfo]] for the function as defined by expression T using the given name.
+   */
   protected def expressionInfo[T <: Expression : ClassTag](name: String): ExpressionInfo = {
     val clazz = scala.reflect.classTag[T].runtimeClass
     val df = clazz.getAnnotation(classOf[ExpressionDescription])

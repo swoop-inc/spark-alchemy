@@ -5,13 +5,15 @@ import org.apache.spark.sql.Column
 
 
 /** Convenience trait to use HyperLogLog functions with the same error consistently.
-  * Spark's own [[sql.functions.approx_count_distinct()]] as well as the granular HLL
-  * [[HLLFunctions.hll_init()]] and [[HLLFunctions.hll_init_collection()]] will be
-  * automatically parameterized by [[BoundHLL.hllError]].
-  */
+ * Spark's own [[sql.functions.approx_count_distinct()]] as well as the granular HLL
+ * [[HLLFunctions.hll_init()]] and [[HLLFunctions.hll_init_collection()]] will be
+ * automatically parameterized by [[BoundHLL.hllError]].
+ */
 trait BoundHLL extends Serializable {
 
   def hllError: Double
+
+  def functions: HLLFunctions
 
   def approx_count_distinct(col: Column): Column =
     sql.functions.approx_count_distinct(col, hllError)
@@ -42,11 +44,16 @@ trait BoundHLL extends Serializable {
 
   def hll_init_collection_agg(columnName: String): Column =
     functions.hll_init_collection_agg(columnName, hllError)
-
 }
 
 object BoundHLL {
-  def apply(error: Double): BoundHLL = new BoundHLL {
+  /**
+   * @param error maximum estimation error allowed
+   * @param impl only affects the hll_* functions, not Spark's built-ins
+   */
+  def apply(error: Double)(implicit impl: Implementation = null): BoundHLL = new BoundHLL {
     def hllError: Double = error
+
+    val functions = HLLFunctions.withImpl(impl)
   }
 }

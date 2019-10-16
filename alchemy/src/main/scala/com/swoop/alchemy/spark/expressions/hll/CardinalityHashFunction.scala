@@ -7,9 +7,9 @@ import org.apache.spark.sql.types._
 import org.apache.spark.unsafe.types.UTF8String
 
 /**
-  * Hash function for Spark data values that is suitable for cardinality counting. Unlike Spark's built-in hashing,
-  * it differentiates between different data types and accounts for nulls.
-  */
+ * Hash function for Spark data values that is suitable for cardinality counting. Unlike Spark's built-in hashing,
+ * it differentiates between different data types and accounts for nulls.
+ */
 abstract class CardinalityHashFunction extends InterpretedHashFunction {
 
   override def hash(value: Any, dataType: DataType, seed: Long): Long = {

@@ -13,7 +13,7 @@ object HLLFunctionRegistration extends NativeFunctionRegistration {
     expression[HyperLogLogMerge]("hll_merge"),
     expression[HyperLogLogRowMerge]("hll_row_merge"),
     expression[HyperLogLogCardinality]("hll_cardinality"),
-    expression[HyperLogLogIntersectionCardinality]("hll_intersect_cardinality")
+    expression[HyperLogLogIntersectionCardinality]("hll_intersect_cardinality"),
+    expression[HyperLogLogConvert]("hll_convert")
   )
-
 }

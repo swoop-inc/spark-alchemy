@@ -19,5 +19,8 @@ project/plugins/project/
 #Markdown editing
 .Ulysses-favorites.plist
 
+#IntelliJ
+.idea
+
 metastore_db/
 tmp/

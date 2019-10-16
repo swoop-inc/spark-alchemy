@@ -9,6 +9,7 @@ jobs:
 
     docker:
       - image: swoopinc/spark-alchemy:adoptopenjdk-8u222-alpine-circleci-201909251709
+      - image: swoopinc/postgres-hll:11
 
     working_directory: ~/spark-alchemy
 
@@ -33,6 +34,10 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.sbt" }}
+
+      - run:
+          name: Wait for postgres
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       # "cat /dev/null |" prevents sbt from running in interactive mode. One of many amazing
       # hacks get sbt working in a sane manner.

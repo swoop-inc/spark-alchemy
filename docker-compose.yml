@@ -1,0 +1,13 @@
+version: '3'
+
+volumes:
+  postgres-data:
+    driver: local
+
+services:
+  postgres:
+    image: swoopinc/postgres-hll:11
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data:cached

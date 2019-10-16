@@ -1,4 +1,13 @@
-# Release Process
+# Development
+
+## Local tests
+
+To run the `PostgresInteropTest` you need to have a working Docker 
+environment. On Mac, that means having Docker Desktop installed and 
+running. Then run `docker-compose up` in the repository root to start a
+Postgres server.
+
+## Release Process
 
 1. Develop new code on feature branches.
 
@@ -12,7 +21,7 @@
     * Publish the microsite to Github Pages
     * Create a new release on the [Github Project Release Page](https://github.com/swoop-inc/spark-alchemy/releases)
 
-## Project Version Numbers
+### Project Version Numbers
 
 * The `VERSION` file in the root of the project contains the version number that SBT will use for the `spark-alchemy` project.
 * The format should follow [Semantic Versioning](https://semver.org/) with the patch number matching the Travis CI build number when deploying new releases.
