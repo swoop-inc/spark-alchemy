@@ -24,3 +24,5 @@ project/plugins/project/
 
 metastore_db/
 tmp/
+
+.DS_Store
