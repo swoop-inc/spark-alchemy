@@ -18,6 +18,11 @@ libraryDependencies += "com.swoop" %% "spark-alchemy" % "<version>"
 
 You can find all released versions [here](https://github.com/swoop-inc/spark-alchemy/releases).
 
+## Usage on cluster
+
+* Attach the spark-alchemy JAR ([JAR files here](https://mvnrepository.com/artifact/com.swoop/spark-alchemy_2.11))
+* Attach the `net.agkn.hll` JAR ([JAR files here](https://mvnrepository.com/artifact/net.agkn/hll))
+
 ## For Spark users
 
 - Native [HyperLogLog functions](../../wiki/Spark-HyperLogLog-Functions) that offer reaggregatable fast approximate distinct counting capabilities far beyond those in OSS Spark with interoperability to Postgres and even JavaScript.
