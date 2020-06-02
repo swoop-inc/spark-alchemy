@@ -1,0 +1,136 @@
+name: spark-alchemy workflow
+
+on:
+  push:
+    branches:
+      - '*'
+      - '!gh-pages'
+
+env:
+  DOCKERIZE_VERSION: v0.6.1
+  SASS_VERSION: "1.1.1"
+
+  TERM: dumb
+  AWS_REGION: us-east-1
+  AWS_DEFAULT_REGION: us-east-1
+  SWOOP_VERSION_FILE: VERSION
+  JVM_OPTS: "-Xms2048m -Xmx2048m -Xss128m -XX:+CMSClassUnloadingEnabled -XX:MaxMetaspaceSize=1024m"
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    services:
+      postgres:
+        image: swoopinc/postgres-hll:11
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dockerize
+        run: |
+          cd ${{ runner.temp }}
+          wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+      - name: Wait for postgres
+        run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - name: Cache SBT ivy cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.ivy2/cache
+          key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/build.sbt') }}
+      - name: Cache SBT
+        uses: actions/cache@v1
+        with:
+          path: ~/.sbt
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+      - name: Cache coursier
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier
+          key: ${{ runner.os }}-coursier-${{ hashFiles('**/build.sbt') }}
+
+      # "cat /dev/null |" prevents sbt from running in interactive mode. One of many amazing
+      # hacks get sbt working in a sane manner.
+      - name: sbt test
+        run: cat /dev/null | sbt test
+
+  deploy:
+    name: Deploy
+    if: ${{ github.repository == 'swoop-inc/spark-alchemy' && github.ref == 'refs/heads/release' }}
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+
+      - name: Fetch git tags
+        run: git fetch --all --tags
+
+      - name: Set SWOOP_VERSION
+        run: echo "##[set-env name=SWOOP_VERSION;]$(grep -Po "\\d+.\\d+" ${SWOOP_VERSION_FILE}).${GITHUB_RUN_NUMBER}"
+
+      - name: Set SWOOP_VERSION in project file
+        run: echo "$SWOOP_VERSION" | tee $SWOOP_VERSION_FILE
+
+      - name: Cache SBT ivy cache
+        uses: actions/cache@v1
+        with:
+          path: ~/.ivy2/cache
+          key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/build.sbt') }}
+      - name: Cache SBT
+        uses: actions/cache@v1
+        with:
+          path: ~/.sbt
+          key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
+      - name: Cache coursier
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/coursier
+          key: ${{ runner.os }}-coursier-${{ hashFiles('**/build.sbt') }}
+
+      - name: sbt publish
+        run: cat /dev/null | sbt publish
+
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+
+      - name: Install jekyll
+        run: gem install bundler jekyll
+
+      - name: Install sass
+        run: |
+          cd ${{ runner.temp }}
+          curl -sLO https://github.com/sass/dart-sass/releases/download/${SASS_VERSION}/dart-sass-${SASS_VERSION}-linux-x64.tar.gz
+          tar --strip-components=1 -xzf dart-sass-${SASS_VERSION}-linux-x64.tar.gz
+          echo "::add-path::$(pwd)"
+
+      - name: sbt publishMicrosite
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cat /dev/null | sbt publishMicrosite
+
+      - name: Create GitHub Release
+        run: |
+          export release_message="$(printf "%s\n\n%s\n" \
+            "https://github.com/${{ github.repository }}/commit/${{ github.sha }}/checks" \
+            "$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s")"
+          )"
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/releases \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "tag_name": "v${{ env.SWOOP_VERSION }}",
+            "target_commitish": "${{ github.sha }}",
+            "name": "v${{ env.SWOOP_VERSION }}",
+            "body": '"$(jq -n --arg output "$release_message" '$output')"',
+            "prerelease": false
+          }'
