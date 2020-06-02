@@ -99,16 +99,4 @@ workflows:
           filters:
             branches:
               ignore:
-                - release
-
-                # Don't build branches/tags that match this regex. It's the convention used
-                # for tagging releases, which should be already tested before tagging.
-                - /^v[0-9]/
-                - gh-pages
-
-      - build:
-          create-release: true
-          filters:
-            branches:
-              only:
-                - release
+                - /.*/
