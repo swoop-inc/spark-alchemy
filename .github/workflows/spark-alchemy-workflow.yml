@@ -96,6 +96,9 @@ jobs:
           key: ${{ runner.os }}-coursier-${{ hashFiles('**/build.sbt') }}
 
       - name: sbt publish
+        env:
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+          BINTRAY_PASS: ${{ secrets.BINTRAY_PASS }}
         run: cat /dev/null | sbt publish
 
       - uses: actions/setup-ruby@v1
