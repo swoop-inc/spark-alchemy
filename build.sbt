@@ -1,14 +1,14 @@
 ThisBuild / organization := "com.swoop"
 ThisBuild / version := scala.io.Source.fromFile("VERSION").mkString.stripLineEnd
 
-ThisBuild / scalaVersion := "2.11.8"
-ThisBuild / crossScalaVersions := Seq("2.11.8")
+ThisBuild / scalaVersion := "2.11.12"
+ThisBuild / crossScalaVersions := Seq("2.11.12")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5"
+val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8"
 
-val sparkVersion = "2.3.1"
+val sparkVersion = "2.4.5"
 
 // https://bintray.com/swoop-inc/maven
 resolvers += Resolver.bintrayRepo("swoop-inc", "maven")
