@@ -1,35 +1,21 @@
-package com.swoop.alchemy.spark.expressions.hll.agkn
+package com.swoop.alchemy.spark.expressions.hll
 
-import java.sql.{DriverManager, ResultSet}
+import java.sql.{DriverManager, ResultSet, Statement}
 
-import com.swoop.alchemy.spark.expressions.hll.IMPLEMENTATION_CONFIG_KEY
 import com.swoop.alchemy.spark.expressions.hll.functions._
-import com.swoop.spark.test.HiveSqlSpec
+import com.swoop.test_utils.SparkSessionSpec
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.scalatest.{Matchers, WordSpec}
 
+
 case class Postgres(user: String, database: String, port: Int) {
-  val con_str = s"jdbc:postgresql://localhost:${port}/${database}?user=${user}"
+  val con_str = s"jdbc:postgresql://localhost:$port/$database?user=$user"
 
-  def execute[T](query: String, handler: ResultSet => T): T = {
-    val conn = DriverManager.getConnection(con_str)
-    try {
-      val stm = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)
-      return handler(stm.executeQuery(query))
-    } finally {
-      conn.close()
-    }
-  }
+  def execute[T](query: String, handler: ResultSet => T): T =
+    execute(stm => handler(stm.executeQuery(query)))
 
-  def update(query: String): Unit = {
-    val conn = DriverManager.getConnection(con_str)
-    try {
-      val stm = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)
-      stm.executeUpdate(query)
-    } finally {
-      conn.close()
-    }
-  }
+  def update(query: String): Unit =
+    execute(_.executeUpdate(query))
 
   def sparkRead(schema: String, table: String)(implicit spark: SparkSession): DataFrame =
     spark.read
@@ -39,29 +25,39 @@ case class Postgres(user: String, database: String, port: Int) {
       .option("user", user)
       .load()
 
-  def sparkWrite(schema: String, table: String)(df: DataFrame) =
+  def sparkWrite(schema: String, table: String)(df: DataFrame): Unit =
     df.write
       .format("jdbc")
       .option("url", s"jdbc:postgresql:${database}")
       .option("dbtable", s"${schema}.${table}")
       .option("user", user)
       .save()
+
+  private def execute[T](fn: Statement => T): T = {
+    val conn = DriverManager.getConnection(con_str)
+    try {
+      val stm = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)
+      fn(stm)
+    } finally {
+      conn.close()
+    }
+  }
 }
 
-class PostgresInteropTest extends WordSpec with Matchers with HiveSqlSpec {
-  lazy val spark = sqlc.sparkSession
+
+class PostgresInteropTest extends WordSpec with Matchers with SparkSessionSpec {
+
+  import testImplicits._
+
   lazy val pg = Postgres("postgres", "postgres", 5432)
 
   "Postgres interop" should {
     "calculate same results" in {
-      import spark.implicits._
-
       // use Aggregate Knowledge (Postgres-compatible) HLL implementation
       spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN")
 
       // init Postgres extension for database
       pg.update("CREATE EXTENSION IF NOT EXISTS hll;")
-
 
       // create some random not-entirely distinct rows
       val rand = new scala.util.Random(42)
@@ -101,4 +97,5 @@ class PostgresInteropTest extends WordSpec with Matchers with HiveSqlSpec {
       distinctSpark should be(distinctPostgres)
     }
   }
+
 }

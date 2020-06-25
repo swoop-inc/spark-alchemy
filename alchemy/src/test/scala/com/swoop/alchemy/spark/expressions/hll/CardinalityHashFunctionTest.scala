@@ -6,11 +6,11 @@ import org.apache.spark.sql.types._
 import org.apache.spark.unsafe.types.UTF8String
 import org.scalatest.{Matchers, WordSpec}
 
+
 class CardinalityHashFunctionTest extends WordSpec with Matchers {
 
   "Cardinality hash functions" should {
     "account for nulls" in {
-
       val a = UTF8String.fromString("a")
 
       allDistinct(Seq(

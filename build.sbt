@@ -23,7 +23,6 @@ lazy val alchemy = (project in file("."))
     resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
       scalaTest % Test withSources(),
-      "com.swoop" %% "spark-test-sugar" % "1.5.0" % Test withSources(),
       "net.agkn" % "hll" % "1.6.0" withSources(),
       "org.postgresql" % "postgresql" % "42.2.8" % Test withSources()
     ),

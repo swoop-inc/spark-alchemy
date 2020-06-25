@@ -3,7 +3,7 @@ package com.swoop.alchemy.spark.expressions.hll
 import com.clearspring.analytics.stream.cardinality.HyperLogLogPlus
 import com.swoop.alchemy.spark.expressions.hll.Implementation.{AGKN, STRM}
 import com.swoop.alchemy.spark.expressions.hll.functions.{hll_init_collection, hll_init_collection_agg, _}
-import com.swoop.spark.test.HiveSqlSpec
+import com.swoop.test_utils.SparkSessionSpec
 import net.agkn.hll.HLL
 import net.agkn.hll.HLLType.FULL
 import org.apache.spark.sql.DataFrame
@@ -13,7 +13,8 @@ import org.apache.spark.sql.types._
 import org.scalatest.{Matchers, WordSpec}
 
 
-object HLLFunctionsTestHelpers {
+object HLLFunctionsTest {
+
   System.setSecurityManager(null)
 
   case class Data(c1: Int, c2: String, c3: Array[Int], c4: Map[String, String], c5: Array[String])
@@ -25,34 +26,31 @@ object HLLFunctionsTestHelpers {
   case class Data2(c1: Array[String], c2: Map[String, String])
 
   case class Data3(c1: String, c2: String, c3: String)
+
 }
 
-class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
+class HLLFunctionsTest extends WordSpec with Matchers with SparkSessionSpec {
 
-  import HLLFunctionsTestHelpers._
-
-  lazy val spark = sqlc.sparkSession
+  import HLLFunctionsTest._
+  import testImplicits._
 
   "HyperLogLog functions" when {
     "config key unset" should {
       behave like hllImplementation(StreamLib, spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
     }
-
     "config key AGKN" should {
       behave like hllImplementation(AgKn, spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN"))
     }
-
     "config key STRM" should {
       behave like hllImplementation(StreamLib, spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "STRM"))
     }
   }
 
-  def hllImplementation(impl: Implementation, setup: => Unit) = {
+  private def hllImplementation(impl: Implementation, setup: => Unit): Unit = {
     "use right implementation" in {
       setup
       hll_init(lit(null), 0.39).expr.asInstanceOf[HyperLogLogInitSimple].impl should be(impl)
     }
-
     "not allow relativeSD > 39%" in {
       setup
       val err = "requirement failed: HLL requires at least 4 bits for addressing. Use a lower error, at most 39%."
@@ -70,7 +68,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
         hll_init_collection(c, 0.40)
       } should have message err
     }
-
     "register native org.apache.spark.sql.ext.functions" in {
       setup
       HLLFunctionRegistration.registerFunctions(spark)
@@ -91,7 +88,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
         """.stripMargin // last line will error if evaluated, but is valid under statical analysis
       )
     }
-
     "estimate cardinality of simple types and collections" in {
       setup
 
@@ -117,12 +113,9 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
         /* collections */ 0, 0, 0, 3
       ))
     }
-
     // @todo merge tests with grouping
     "estimate cardinality correctly" in {
       setup
-
-      import spark.implicits._
 
       val df = spark.createDataset[Data](Seq[Data](
         Data(1, "a", Array(1, 2, 3), Map("a" -> "A"), Array.empty),
@@ -159,11 +152,8 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
         0 // 0 unique values across all arrays, nulls not counted
       ))
     }
-
     "estimate multiples correctly" in {
       setup
-
-      import spark.implicits._
 
       val createSampleData =
         spark.createDataset(Seq(
@@ -180,7 +170,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
     }
   }
 
-
   "HyperLogLog aggregate functions" when {
     "config key unset" should {
       behave like aggregateFunctions(spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
@@ -196,11 +185,10 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
     }
   }
 
-  def aggregateFunctions(setup: => Unit): Unit = {
+  private def aggregateFunctions(setup: => Unit): Unit = {
     // @todo merge tests with grouping
     "estimate cardinality correctly" in {
       setup
-      import spark.implicits._
 
       val df = spark.createDataset[Data](Seq[Data](
         Data(1, "a", Array(1, 2, 3), Map("a" -> "A"), Array.empty),
@@ -239,7 +227,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
     }
     "estimate multiples correctly" in {
       setup
-      import spark.implicits._
 
       val createSampleData =
         spark.createDataset(Seq(
@@ -254,7 +241,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
 
       results should be(Seq(4, 4))
     }
-
   }
 
   def merge(df: DataFrame): DataFrame =
@@ -274,8 +260,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
   "HyperLogLog row merge function" should {
     // @todo merge tests with grouping
     "estimate cardinality correctly, with nulls" in {
-      import spark.implicits._
-
       val df = spark.createDataset[Data3](Seq[Data3](
         Data3("a", "a", "a"),
         Data3("a", "b", "c"),
@@ -300,11 +284,9 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
     "config key unset" should {
       behave like intersectionFunction(spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
     }
-
     "config key AGKN" should {
       behave like intersectionFunction(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN"))
     }
-
     "config key STRM" should {
       behave like intersectionFunction(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "STRM"))
     }
@@ -314,7 +296,6 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
     // @todo merge tests with grouping
     "estimate cardinality correctly" in {
       setup
-      import spark.implicits._
 
       val df = spark.createDataset[Data3](Seq[Data3](
         Data3("a", "e", "f"),
@@ -332,10 +313,8 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
 
       results should be((5, 0))
     }
-
     "handle nulls correctly" in {
       setup
-      import spark.implicits._
 
       val df = spark.createDataset[Data3](Seq[Data3](
         Data3("a", null, null),
@@ -376,15 +355,14 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
   "Conversion function" should {
     "estimate similar as original" in {
 
-      def randomize(callable: (Long) => Unit, n: Int): Unit = {
+      def randomize(callable: Long => Unit, n: Int): Unit = {
         val rand = new scala.util.Random(42)
-        for (i <- 0 until n) {
+        for (_ <- 0 until n) {
           callable(XXH64.hashInt(rand.nextInt(n), 0))
         }
       }
 
       val p = 20
-
       val strm = new HyperLogLogPlus(p, 0)
       val agkn = new HLL(p, 5, 0, false, FULL)
 
@@ -400,11 +378,10 @@ class HLLFunctionsTest extends WordSpec with Matchers with HiveSqlSpec {
 
   "error on unsupported conversion" in {
     the[IllegalArgumentException] thrownBy {
-      import spark.implicits._
-
-      spark.emptyDataset[(Int)].toDF()
+      spark.range(1)
         .withColumn("foo", hll_convert(hll_init(lit(1)), AGKN, STRM))
         .collect()
     } should have message "HLL conversion is currently only supported from STREAM_LIB to AGGREGATE_KNOWLEDGE"
   }
+
 }
