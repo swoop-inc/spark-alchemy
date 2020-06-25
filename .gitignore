@@ -24,5 +24,6 @@ project/plugins/project/
 
 metastore_db/
 tmp/
+spark-warehouse/
 
 .DS_Store
