@@ -8,7 +8,7 @@ with rich data (thousands of columns).
 
 ## Supported languages
 
-While `spark-alchemy`, like Spark itself, is written in Scala, much of its functionality, such as interoperable HyperLogLog functions, can be used from other Spark-supported langauges such as SparkSQL and Python ([here is how](https://github.com/swoop-inc/spark-alchemy/issues/9#issuecomment-555155170)). 
+While `spark-alchemy`, like Spark itself, is written in Scala, much of its functionality, such as interoperable HyperLogLog functions, can be used from other Spark-supported languages such as SparkSQL and [Python](#for-python-developers). 
 
 ## Installation
 
@@ -33,6 +33,10 @@ You can find all released versions [here](https://github.com/swoop-inc/spark-alc
 - Helpers for [native function registration](../../wiki/Spark-Native-Functions)
 
 - Look at [`SparkSessionSpec`](alchemy/src/test/scala/com/swoop/test_utils/SparkSessionSpec.scala) as an example of how to reuse advanced Spark testing functionality from OSS Spark.
+
+## For Python developers
+
+- See [HyperLogLog functions](../../wiki/Spark-HyperLogLog-Functions) for an example of how `spark-alchemy` HLL functions can be registered for use through PySpark.
 
 ## What we hope to open source in the future
 
