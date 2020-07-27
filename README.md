@@ -22,6 +22,8 @@ resolvers += Resolver.bintrayRepo("swoop-inc", "maven")
 libraryDependencies += "com.swoop" %% "spark-alchemy" % "<version>"
 ```
 
+Some use cases such as interoperability with PySpark may require the assembly of a fat JAR of `spark-alchemy`. To assemble, run `sbt assembly`. To skip tests during assembly, run `sbt 'set sbt.Keys.test in assembly := {}' assembly` instead.
+
 You can find all released versions [here](https://github.com/swoop-inc/spark-alchemy/releases).
 
 ## For Spark users
