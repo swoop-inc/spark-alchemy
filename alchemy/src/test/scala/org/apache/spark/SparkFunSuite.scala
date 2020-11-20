@@ -5,10 +5,11 @@ import java.io.File
 
 import scala.annotation.tailrec
 import org.apache.log4j.{Appender, Level, Logger}
-import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, BeforeAndAfterEach, FunSuite, Outcome, Suite}
+import org.scalatest.{BeforeAndAfter, BeforeAndAfterAll, BeforeAndAfterEach, Outcome, Suite}
 import org.apache.spark.internal.Logging
 import org.apache.spark.internal.config.Tests.IS_TESTING
 import org.apache.spark.util.{AccumulatorContext, Utils}
+import org.scalatest.funsuite.AnyFunSuite
 
 /**
   * Base abstract class for all unit tests in Spark for handling common functionality.
@@ -35,7 +36,7 @@ import org.apache.spark.util.{AccumulatorContext, Utils}
   * }
   */
 abstract class SparkFunSuite
-  extends FunSuite
+  extends AnyFunSuite
     with SparkSuiteBase {
   // scalastyle:on
 

@@ -6,7 +6,7 @@ ThisBuild / crossScalaVersions := Seq("2.12.11")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.0.8"
+val scalaTest = "org.scalatest" %% "scalatest" % "3.2.2"
 
 val sparkVersion = "3.0.0"
 

@@ -5,7 +5,8 @@ import java.sql.{DriverManager, ResultSet, Statement}
 import com.swoop.alchemy.spark.expressions.hll.functions._
 import com.swoop.test_utils.SparkSessionSpec
 import org.apache.spark.sql.{DataFrame, SparkSession}
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 
 case class Postgres(user: String, database: String, port: Int) {
@@ -45,7 +46,7 @@ case class Postgres(user: String, database: String, port: Int) {
 }
 
 
-class PostgresInteropTest extends WordSpec with Matchers with SparkSessionSpec {
+class PostgresInteropTest extends AnyWordSpec with Matchers with SparkSessionSpec {
 
   import testImplicits._
 

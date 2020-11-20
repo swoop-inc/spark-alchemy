@@ -4,10 +4,11 @@ import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.catalyst.util.{ArrayBasedMapData, ArrayData}
 import org.apache.spark.sql.types._
 import org.apache.spark.unsafe.types.UTF8String
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 
-class CardinalityHashFunctionTest extends WordSpec with Matchers {
+class CardinalityHashFunctionTest extends AnyWordSpec with Matchers {
 
   "Cardinality hash functions" should {
     "account for nulls" in {

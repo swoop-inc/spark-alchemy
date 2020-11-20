@@ -10,7 +10,8 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.catalyst.expressions.XXH64
 import org.apache.spark.sql.functions.{array, col, lit, map}
 import org.apache.spark.sql.types._
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
 
 object HLLFunctionsTest {
@@ -29,7 +30,7 @@ object HLLFunctionsTest {
 
 }
 
-class HLLFunctionsTest extends WordSpec with Matchers with SparkSessionSpec {
+class HLLFunctionsTest extends AnyWordSpec with Matchers with SparkSessionSpec {
 
   import HLLFunctionsTest._
   import testImplicits._
