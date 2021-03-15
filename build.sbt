@@ -10,9 +10,6 @@ val scalaTest = "org.scalatest" %% "scalatest" % "3.2.2"
 
 val sparkVersion = "3.0.0"
 
-// https://bintray.com/swoop-inc/maven
-resolvers += Resolver.bintrayRepo("swoop-inc", "maven")
-
 lazy val alchemy = (project in file("."))
   .aggregate(test)
   .settings(
@@ -89,6 +86,13 @@ ThisBuild / organizationName := "Swoop, Inc"
 ThisBuild / startYear := Some(2018)
 ThisBuild / licenses += ("Apache-2.0", new URL("https://www.apache.org/licenses/LICENSE-2.0.txt"))
 
-// Bintray publishing
-ThisBuild / bintrayOrganization := Some("swoop-inc")
-ThisBuild / bintrayPackageLabels := Seq("apache", "spark", "apache-spark", "scala", "big-data", "spark-alchemy", "dataset", "swoop")
+ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
+ThisBuild / homepage := Some(url("https://swoop-inc.github.io/spark-alchemy/"))
+ThisBuild / developers ++= List(
+  Developer("ssimeonov", "Simeon Simeonov", "@ssimeonov", url("https://github.com/ssimeonov"))
+)
+ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/swoop-inc/spark-alchemy"), "git@github.com:swoop-inc/spark-alchemy.git"))
+ThisBuild / updateOptions := updateOptions.value.withLatestSnapshots(false)
+ThisBuild / publishMavenStyle := true
+ThisBuild / publishTo := sonatypePublishToBundle.value
+Global / useGpgPinentry := true
