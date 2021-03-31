@@ -1,4 +1,4 @@
-package com.swoop.alchemy.test
+package com.swoop.test_utils
 
 import org.apache.spark.sql.{Column, DataFrame}
 

@@ -34,7 +34,7 @@ You can find all released versions [here](https://github.com/swoop-inc/spark-alc
 
 - Helpers for [native function registration](../../wiki/Spark-Native-Functions)
 
-- Look at [`SparkSessionSpec`](alchemy/src/test/scala/com/swoop/test_utils/SparkSessionSpec.scala) as an example of how to reuse advanced Spark testing functionality from OSS Spark.
+- Look at [`SparkSessionSpec`](src/test/scala/com/swoop/test_utils/SparkSessionSpec.scala) as an example of how to reuse advanced Spark testing functionality from OSS Spark.
 
 ## For Python developers
 
