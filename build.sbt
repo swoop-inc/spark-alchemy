@@ -24,10 +24,7 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
   "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
   "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
-  "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources(),
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
-    excludeAll ExclusionRule(organization = "org.mortbay.jetty"),
-  "org.apache.spark" %% "spark-hive" % sparkVersion % "provided" withSources()
 )
 fork in Test := true // required for Spark
 
