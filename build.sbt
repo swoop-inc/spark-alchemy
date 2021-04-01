@@ -22,8 +22,6 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.2" % Test withSources(),
   "net.agkn" % "hll" % "1.6.0" withSources(),
   "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
-  "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
-  "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
 )
 fork in Test := true // required for Spark
