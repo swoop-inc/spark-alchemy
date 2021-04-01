@@ -5,7 +5,7 @@ name := "spark-alchemy"
 scalaVersion := "2.12.12"
 crossScalaVersions := Seq("2.12.12")
 
-val sparkVersion = "3.0.0"
+val sparkVersion = "3.0.1"
 
 credentials += Credentials(Path.userHome / ".sbt" / "sonatype_credentials")
 homepage := Some(url("https://swoop-inc.github.io/spark-alchemy/"))
