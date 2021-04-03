@@ -21,7 +21,8 @@ lazy val alchemy = (project in file("."))
     libraryDependencies ++= Seq(
       scalaTest % Test withSources(),
       "net.agkn" % "hll" % "1.6.0" withSources(),
-      "org.postgresql" % "postgresql" % "42.2.8" % Test withSources()
+      "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
+      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
     ),
     libraryDependencies ++= sparkDependencies,
     fork in Test := true // required for Spark
@@ -37,12 +38,7 @@ lazy val test = (project in file("alchemy-test"))
   )
 
 lazy val sparkDependencies = Seq(
-  "org.apache.logging.log4j" % "log4j-api" % "2.7" % "provided" withSources(),
-  "org.apache.logging.log4j" % "log4j-core" % "2.7" % "provided" withSources(),
-  "org.apache.spark" %% "spark-core" % sparkVersion % "provided" withSources(),
   "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
-    excludeAll ExclusionRule(organization = "org.mortbay.jetty"),
-  "org.apache.spark" %% "spark-hive" % sparkVersion % "provided" withSources()
 )
 
 enablePlugins(BuildInfoPlugin)
