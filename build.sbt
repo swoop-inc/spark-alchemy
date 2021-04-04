@@ -6,12 +6,9 @@ ThisBuild / crossScalaVersions := Seq("2.12.11")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val scalaTest = "org.scalatest" %% "scalatest" % "3.2.2"
-
 val sparkVersion = "3.0.0"
 
 lazy val alchemy = (project in file("."))
-  .aggregate(test)
   .settings(
     name := "spark-alchemy",
     scalaSource in Compile := baseDirectory.value / "alchemy/src/main/scala",
@@ -19,27 +16,13 @@ lazy val alchemy = (project in file("."))
     resourceDirectory in Compile := baseDirectory.value / "alchemy/src/main/resources",
     resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      scalaTest % Test withSources(),
+      "org.scalatest" %% "scalatest" % "3.2.2" % Test withSources(),
       "net.agkn" % "hll" % "1.6.0" withSources(),
       "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
       "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
     ),
-    libraryDependencies ++= sparkDependencies,
     fork in Test := true // required for Spark
   )
-
-lazy val test = (project in file("alchemy-test"))
-  .settings(
-    name := "spark-alchemy-test",
-    libraryDependencies ++= Seq(
-      scalaTest % Test withSources()
-    ),
-    libraryDependencies ++= sparkDependencies
-  )
-
-lazy val sparkDependencies = Seq(
-  "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
-)
 
 enablePlugins(BuildInfoPlugin)
 enablePlugins(GitVersioning, GitBranchPrompt)
