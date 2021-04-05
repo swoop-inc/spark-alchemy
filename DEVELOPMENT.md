@@ -17,7 +17,7 @@ Postgres server.
 
     * Build the project
     * Run tests
-    * Deploy artifacts to Bintray
+    * Deploy artifacts to Maven
     * Publish the microsite to Github Pages
     * Create a new release on the [Github Project Release Page](https://github.com/swoop-inc/spark-alchemy/releases)
 

@@ -1,7 +1,5 @@
 # spark-alchemy
 
-[![Download](https://api.bintray.com/packages/swoop-inc/maven/spark-alchemy/images/download.svg)](https://bintray.com/swoop-inc/maven/spark-alchemy/_latestVersion)
-
 Spark Alchemy is a collection of open-source Spark tools & frameworks that have made the data engineering and
 data science teams at [Swoop](https://www.swoop.com) highly productive in our demanding petabyte-scale environment
 with rich data (thousands of columns).
@@ -12,19 +10,15 @@ While `spark-alchemy`, like Spark itself, is written in Scala, much of its funct
 
 ## Installation
 
-Versions 0.x target Spark 2.x and Scala 2.11. Versions 1.x target Spark 3.x and Scala 2.12.
-
 Add the following to your `libraryDependencies` in SBT:
 
 ```scala
-resolvers += Resolver.bintrayRepo("swoop-inc", "maven")
-
-libraryDependencies += "com.swoop" %% "spark-alchemy" % "<version>"
+libraryDependencies += "com.swoop" %% "spark-alchemy" % "1.0.1"
 ```
 
-Some use cases such as interoperability with PySpark may require the assembly of a fat JAR of `spark-alchemy`. To assemble, run `sbt assembly`. To skip tests during assembly, run `sbt 'set sbt.Keys.test in assembly := {}' assembly` instead.
+You can find all released versions [here](https://repo1.maven.org/maven2/com/swoop/spark-alchemy_2.12/).
 
-You can find all released versions [here](https://github.com/swoop-inc/spark-alchemy/releases).
+Some use cases such as interoperability with PySpark may require the assembly of a fat JAR of `spark-alchemy`. To assemble, run `sbt assembly`. To skip tests during assembly, run `sbt 'set sbt.Keys.test in assembly := {}' assembly` instead.
 
 ## For Spark users
 
