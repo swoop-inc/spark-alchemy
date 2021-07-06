@@ -6,7 +6,7 @@ ThisBuild / crossScalaVersions := Seq("2.12.11")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val sparkVersion = "3.0.1"
+val sparkVersion = "3.1.2"
 
 lazy val alchemy = (project in file("."))
   .settings(
