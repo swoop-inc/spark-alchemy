@@ -1,7 +1,12 @@
 ThisBuild / organization := "com.swoop"
 ThisBuild / version := scala.io.Source.fromFile("VERSION").mkString.stripLineEnd
 
-val sparkVersion = "3.0.1"
+ThisBuild / scalaVersion := "2.12.11"
+ThisBuild / crossScalaVersions := Seq("2.12.11")
+
+ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
+
+val sparkVersion = "3.1.2"
 
 lazy val scalaSettings = Seq(
   scalaVersion := "2.12.11",
