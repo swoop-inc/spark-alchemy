@@ -57,10 +57,10 @@ Build docs microsite
 
 ```sbt "project docs" makeMicrosite```
 
-Run docs microsite locally (run under `target/site` folder)
+Run docs microsite locally (run under `docs/target/site` folder)
 
 ```
-jekyll serve -b /spark-records
+jekyll serve -b /spark-alchemy
 ``` 
 
 [More details](https://47degrees.github.io/sbt-microsites/)
