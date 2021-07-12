@@ -1,12 +1,16 @@
 ThisBuild / organization := "com.swoop"
 ThisBuild / version := scala.io.Source.fromFile("VERSION").mkString.stripLineEnd
 
-ThisBuild / scalaVersion := "2.12.11"
-ThisBuild / crossScalaVersions := Seq("2.12.11")
-
-ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
-
 val sparkVersion = "3.0.1"
+
+lazy val scalaSettings = Seq(
+  scalaVersion := "2.12.11",
+  crossScalaVersions := Seq("2.12.11"),
+  scalacOptions in(Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/docs/root-doc.txt"),
+  scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits"),
+  javacOptions in(Compile, doc) ++= Seq("-notimestamp", "-linksource"),
+  javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
+)
 
 lazy val alchemy = (project in file("."))
   .settings(
@@ -21,44 +25,52 @@ lazy val alchemy = (project in file("."))
       "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
       "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
     ),
-    fork in Test := true // required for Spark
+    fork in Test := true, // required for Spark
+    scalaSettings
   )
+  .enablePlugins(SiteScaladocPlugin)
+  .enablePlugins(BuildInfoPlugin)
+  .enablePlugins(GitVersioning, GitBranchPrompt)
 
-enablePlugins(BuildInfoPlugin)
-enablePlugins(GitVersioning, GitBranchPrompt)
-enablePlugins(MicrositesPlugin)
-enablePlugins(SiteScaladocPlugin)
-enablePlugins(TutPlugin)
+lazy val docs = project
+  .in(file("docs"))
+  .settings(
+    moduleName := "spark-alchemy-docs",
+    name := moduleName.value,
+    scalaSettings,
+    micrositeSettings
+  )
+  .dependsOn(alchemy)
+  .enablePlugins(MicrositesPlugin)
+
+lazy val micrositeSettings = Seq(
+  micrositeCompilingDocsTool := WithTut,
+  micrositeName := "Spark Alchemy",
+  micrositeDescription := "Useful extensions to Apache Spark",
+  micrositeAuthor := "Swoop",
+  micrositeHomepage := "https://www.swoop.com",
+  micrositeBaseUrl := "/spark-alchemy",
+  micrositeDocumentationUrl := "/spark-alchemy/docs.html",
+  micrositeGithubOwner := "swoop-inc",
+  micrositeGithubRepo := "spark-alchemy",
+  micrositeHighlightTheme := "tomorrow",
+  micrositeTheme := "pattern",
+  micrositePushSiteWith := GitHub4s,
+  micrositeGithubToken := sys.env.get("GITHUB_TOKEN"),
+  micrositeImgDirectory := (Compile / resourceDirectory).value / "site" / "images",
+  micrositeCssDirectory := (Compile / resourceDirectory).value / "site" / "styles",
+  micrositeJsDirectory := (Compile / resourceDirectory).value / "site" / "scripts"
+)
+
 
 // Speed up dependency resolution (experimental)
 // @see https://www.scala-sbt.org/1.0/docs/Cached-Resolution.html
 ThisBuild / updateOptions := updateOptions.value.withCachedResolution(true)
 
 // @see https://wiki.scala-lang.org/display/SW/Configuring+SBT+to+Generate+a+Scaladoc+Root+Page
-scalacOptions in(Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/docs/root-doc.txt")
-scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits")
-javacOptions in(Compile, doc) ++= Seq("-notimestamp", "-linksource")
 autoAPIMappings := true
 
 buildInfoPackage := "com.swoop.alchemy"
-
-tutSourceDirectory := baseDirectory.value / "docs" / "main" / "tut"
-micrositeImgDirectory := baseDirectory.value / "docs" / "main" / "resources" / "site" / "images"
-micrositeCssDirectory := baseDirectory.value / "docs" / "main" / "resources" / "site" / "styles"
-micrositeJsDirectory := baseDirectory.value / "docs" / "main" / "resources" / "site" / "scripts"
-
-micrositeName := "Spark Alchemy"
-micrositeDescription := "Useful extensions to Apache Spark"
-micrositeAuthor := "Swoop"
-micrositeHomepage := "https://www.swoop.com"
-micrositeBaseUrl := "spark-alchemy"
-micrositeDocumentationUrl := "/spark-alchemy/docs.html"
-micrositeGithubOwner := "swoop-inc"
-micrositeGithubRepo := "spark-alchemy"
-micrositeHighlightTheme := "tomorrow"
-
-micrositePushSiteWith := GitHub4s
-micrositeGithubToken := sys.env.get("GITHUB_TOKEN")
 
 // SBT header settings
 ThisBuild / organizationName := "Swoop, Inc"
