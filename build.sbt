@@ -44,7 +44,6 @@ lazy val docs = project
   .enablePlugins(MicrositesPlugin)
 
 lazy val micrositeSettings = Seq(
-  micrositeCompilingDocsTool := WithTut,
   micrositeName := "Spark Alchemy",
   micrositeDescription := "Useful extensions to Apache Spark",
   micrositeAuthor := "Swoop",
