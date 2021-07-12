@@ -51,6 +51,20 @@ Some use cases such as interoperability with PySpark may require the assembly of
 
 - Tools for deploying Spark ML pipelines to production.
 
+## Development
+
+Build docs microsite
+
+```sbt "project docs" makeMicrosite```
+
+Run docs microsite locally (run under `docs/target/site` folder)
+
+```
+jekyll serve -b /spark-alchemy
+``` 
+
+[More details](https://47degrees.github.io/sbt-microsites/)
+
 ## More from Swoop
 
 - [spark-records](https://github.com/swoop-inc/spark-records): bulletproof Spark jobs with fast root cause analysis in the case of failures

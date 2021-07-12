@@ -4,6 +4,6 @@ layout: docs
 
 # spark-alchemy by example
 
-```tut
+```scala mdoc
 import com.swoop.alchemy.utils.AnyExtensions
 ```
