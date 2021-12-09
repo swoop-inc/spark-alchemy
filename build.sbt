@@ -6,7 +6,7 @@ ThisBuild / crossScalaVersions := Seq("2.12.11")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val sparkVersion = "3.1.2"
+val sparkVersion = "3.2.0"
 
 lazy val scalaSettings = Seq(
   scalaVersion := "2.12.11",
