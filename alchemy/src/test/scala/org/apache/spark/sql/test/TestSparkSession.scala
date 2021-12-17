@@ -55,7 +55,7 @@ object TestSQLContext {
 private[sql] class TestSQLSessionStateBuilder(
   session: SparkSession,
   state: Option[SessionState])
-  extends SessionStateBuilder(session, state, Map.empty[String, String]) with WithTestConf {
+  extends SessionStateBuilder(session, state) with WithTestConf {
   override def overrideConfs: Map[String, String] = TestSQLContext.overrideConfs
   override def newBuilder: NewBuilder = new TestSQLSessionStateBuilder(_, _)
 }

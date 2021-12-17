@@ -10,6 +10,7 @@ import org.apache.spark.sql.catalyst.expressions.aggregate.HyperLogLogPlusPlus.v
 import org.apache.spark.sql.catalyst.expressions.aggregate.TypedImperativeAggregate
 import org.apache.spark.sql.catalyst.expressions.codegen.CodegenFallback
 import org.apache.spark.sql.catalyst.expressions.{BinaryExpression, ExpectsInputTypes, Expression, ExpressionDescription, Literal, UnaryExpression}
+import org.apache.spark.sql.catalyst.trees.UnaryLike
 import org.apache.spark.sql.catalyst.util.{ArrayData, MapData}
 import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types._
@@ -27,7 +28,7 @@ object HyperLogLogBase {
 
   def resolveImplementation(exp: String): Implementation = exp match {
     case null => resolveImplementation
-    case s => nameToImpl(s.toString)
+    case s => nameToImpl(s)
   }
 
   def resolveImplementation(implicit impl: Implementation = null): Implementation =
@@ -60,7 +61,7 @@ object HyperLogLogBase {
   }
 }
 
-trait HyperLogLogInit extends Expression with HyperLogLogBase {
+trait HyperLogLogInit extends Expression with UnaryLike[Expression] with HyperLogLogBase {
   def relativeSD: Double
 
   // This formula for `p` came from org.apache.spark.sql.catalyst.expressions.aggregate.HyperLogLogPlusPlus:93
@@ -141,7 +142,7 @@ trait HyperLogLogInitAgg extends NullableSketchAggregation with HyperLogLogInit 
   }
 }
 
-trait NullableSketchAggregation extends TypedImperativeAggregate[Option[Instance]] with HyperLogLogBase {
+trait NullableSketchAggregation extends TypedImperativeAggregate[Option[Instance]] with HyperLogLogBase with UnaryLike[Expression] {
 
   override def createAggregationBuffer(): Option[Instance] = None
 
@@ -158,8 +159,6 @@ trait NullableSketchAggregation extends TypedImperativeAggregate[Option[Instance
     buffer.map(_.serialize).orNull
 
   def child: Expression
-
-  override def children: Seq[Expression] = Seq(child)
 
   override def nullable: Boolean = child.nullable
 
@@ -214,6 +213,8 @@ case class HyperLogLogInitSimple(
   }
 
   override def prettyName: String = "hll_init"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 
@@ -267,6 +268,8 @@ case class HyperLogLogInitSimpleAgg(
     copy(inputAggBufferOffset = newOffset)
 
   override def prettyName: String = "hll_init_agg"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 /**
@@ -313,6 +316,8 @@ case class HyperLogLogInitCollection(
 
 
   override def prettyName: String = "hll_init_collection"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 
@@ -367,6 +372,8 @@ case class HyperLogLogInitCollectionAgg(
     copy(inputAggBufferOffset = newOffset)
 
   override def prettyName: String = "hll_init_collection_agg"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 
@@ -427,6 +434,8 @@ case class HyperLogLogMerge(
     copy(inputAggBufferOffset = newOffset)
 
   override def prettyName: String = "hll_merge"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 /**
@@ -455,7 +464,7 @@ case class HyperLogLogRowMerge(
     assert(children.nonEmpty, s"function requires at least one argument")
     children
     }.last match {
-    case Literal(s: Any, StringType) => children.init
+    case Literal(_: Any, StringType) => children.init
     case _ => children
   },
     children.last match {
@@ -490,6 +499,9 @@ case class HyperLogLogRowMerge(
   }
 
   override def prettyName: String = "hll_row_merge"
+
+  override protected def withNewChildrenInternal(newChildren: IndexedSeq[Expression]): Expression =
+    copy(children = newChildren)
 }
 
 /**
@@ -527,6 +539,8 @@ case class HyperLogLogCardinality(
   }
 
   override def prettyName: String = "hll_cardinality"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 /**
@@ -598,6 +612,9 @@ case class HyperLogLogIntersectionCardinality(
   }
 
   override def prettyName: String = "hll_intersect_cardinality"
+
+  override protected def withNewChildrenInternal(newLeft: Expression, newRight: Expression): Expression =
+    copy(left = newLeft, right = newRight)
 }
 
 
@@ -648,6 +665,8 @@ case class HyperLogLogConvert(
   }
 
   override def prettyName: String = "hll_convert"
+
+  override protected def withNewChildInternal(newChild: Expression): Expression = copy(child = newChild)
 }
 
 object functions extends HLLFunctions {
