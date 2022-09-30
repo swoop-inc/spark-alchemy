@@ -25,10 +25,10 @@ lazy val alchemy = (project in file("."))
     resourceDirectory in Compile := baseDirectory.value / "alchemy/src/main/resources",
     resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.2" % Test withSources(),
-      "net.agkn" % "hll" % "1.6.0" withSources(),
-      "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
-      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
+      "org.scalatest" %% "scalatest" % "3.2.2" % Test,
+      "net.agkn" % "hll" % "1.6.0",
+      "org.postgresql" % "postgresql" % "42.2.8" % Test,
+      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
     ),
     fork in Test := true, // required for Spark
     scalaSettings
