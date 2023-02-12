@@ -34,7 +34,7 @@ Some use cases such as interoperability with PySpark may require the assembly of
 
 - See [HyperLogLog functions](../../wiki/Spark-HyperLogLog-Functions) for an example of how `spark-alchemy` HLL functions can be registered for use through PySpark.
 
-## What we hope to open source in the future
+## What we hope to open source in the future, if we have the bandwidth
 
 - Configuration Addressable Production (CAP), Automatic Lifecycle Management (ALM) and Just-in-time Dependency Resolution
 (JDR) as outlined in our Spark+AI Summit talk [Unafraid of Change: Optimizing ETL, ML, and AI in Fast-Paced Environments](https://databricks.com/session/unafraid-of-change-optimizing-etl-ml-ai-in-fast-paced-environments).
