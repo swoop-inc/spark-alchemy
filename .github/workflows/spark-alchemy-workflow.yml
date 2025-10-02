@@ -3,7 +3,7 @@ name: spark-alchemy workflow
 on:
   push:
     branches:
-      - '*'
+      - '**'
       - '!gh-pages'
 
 env:
