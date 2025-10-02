@@ -27,6 +27,11 @@ jobs:
         ports:
           - 5432:5432
     steps:
+      - uses: coursier/setup-action@v1
+        with:
+          jvm: zulu:8
+          apps: sbt
+
       - uses: actions/checkout@v2
 
       - name: Install dockerize
@@ -40,17 +45,17 @@ jobs:
         run: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - name: Cache SBT ivy cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.ivy2/cache
           key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/build.sbt') }}
       - name: Cache SBT
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.sbt
           key: ${{ runner.os }}-sbt-${{ hashFiles('**/build.sbt') }}
       - name: Cache coursier
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ~/.cache/coursier
           key: ${{ runner.os }}-coursier-${{ hashFiles('**/build.sbt') }}

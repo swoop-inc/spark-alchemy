@@ -1,16 +1,16 @@
 ThisBuild / organization := "com.swoop"
 ThisBuild / version := scala.io.Source.fromFile("VERSION").mkString.stripLineEnd
 
-ThisBuild / scalaVersion := "2.12.11"
-ThisBuild / crossScalaVersions := Seq("2.12.11")
+ThisBuild / scalaVersion := "2.12.15"
+ThisBuild / crossScalaVersions := Seq("2.12.15")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
-val sparkVersion = "3.2.0"
+val sparkVersion = "3.5.2"
 
 lazy val scalaSettings = Seq(
-  scalaVersion := "2.12.11",
-  crossScalaVersions := Seq("2.12.11"),
+  scalaVersion := "2.12.15",
+  crossScalaVersions := Seq("2.12.15"),
   scalacOptions in(Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/docs/root-doc.txt"),
   scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits"),
   javacOptions in(Compile, doc) ++= Seq("-notimestamp", "-linksource"),
@@ -25,10 +25,10 @@ lazy val alchemy = (project in file("."))
     resourceDirectory in Compile := baseDirectory.value / "alchemy/src/main/resources",
     resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.2" % Test,
-      "net.agkn" % "hll" % "1.6.0",
-      "org.postgresql" % "postgresql" % "42.2.8" % Test,
-      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
+      "org.scalatest" %% "scalatest" % "3.2.15" % Test withSources(),
+      "net.agkn" % "hll" % "1.6.0" withSources(),
+      "org.postgresql" % "postgresql" % "42.2.8" % Test withSources(),
+      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided" withSources()
     ),
     fork in Test := true, // required for Spark
     scalaSettings
@@ -88,6 +88,25 @@ ThisBuild / developers ++= List(
 )
 ThisBuild / scmInfo := Some(ScmInfo(url("https://github.com/swoop-inc/spark-alchemy"), "git@github.com:swoop-inc/spark-alchemy.git"))
 ThisBuild / updateOptions := updateOptions.value.withLatestSnapshots(false)
+
 ThisBuild / publishMavenStyle := true
+
+ThisBuild / pomPostProcess := { case (node: xml.Elem) =>
+  val buildNode =
+    <build>
+      <sourceDirectory>src/main/scala</sourceDirectory>
+      <testSourceDirectory>src/test/scala</testSourceDirectory>
+      <plugins>
+        <plugin>
+          <groupId>net.alchim31.maven</groupId>
+          <artifactId>scala-maven-plugin</artifactId>
+          <version>4.9.6</version>
+        </plugin>
+      </plugins>
+    </build>
+
+  node.copy(child = node.child :+ buildNode)
+}
+
 ThisBuild / publishTo := sonatypePublishToBundle.value
 Global / useGpgPinentry := true
