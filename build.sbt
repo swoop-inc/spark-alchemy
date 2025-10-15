@@ -20,17 +20,17 @@ lazy val scalaSettings = Seq(
 lazy val alchemy = (project in file("."))
   .settings(
     name := "spark-alchemy",
-    scalaSource in Compile := baseDirectory.value / "alchemy/src/main/scala",
-    scalaSource in Test := baseDirectory.value / "alchemy/src/test/scala",
-    resourceDirectory in Compile := baseDirectory.value / "alchemy/src/main/resources",
-    resourceDirectory in Test := baseDirectory.value / "alchemy/src/test/resources",
+    Compile / scalaSource := baseDirectory.value / "alchemy/src/main/scala",
+    Test / scalaSource := baseDirectory.value / "alchemy/src/test/scala",
+    Compile / resourceDirectory := baseDirectory.value / "alchemy/src/main/resources",
+    Test / resourceDirectory := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.2.15" % Test,
       "net.agkn" % "hll" % "1.6.0",
+      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
       "org.postgresql" % "postgresql" % "42.2.8" % Test,
-      "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
+      "org.scalatest" %% "scalatest" % "3.2.15" % Test,
     ),
-    fork in Test := true, // required for Spark
+    Test / fork := true, // required for Spark
     scalaSettings
   )
   .enablePlugins(SiteScaladocPlugin)
