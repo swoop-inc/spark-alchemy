@@ -10,6 +10,7 @@ import net.agkn.hll.serialization.{HLLMetadata, SchemaVersionOne}
 import net.agkn.hll.util.BitVector
 
 package object hll {
+  @deprecated("Use Constants.IMPLEMENTATION_CONFIG_KEY instead", "1.3.0")
   val IMPLEMENTATION_CONFIG_KEY = "com.swoop.alchemy.hll.implementation"
 
   def strmToAgkn(from: stream.cardinality.HyperLogLogPlus): net.agkn.hll.HLL = {

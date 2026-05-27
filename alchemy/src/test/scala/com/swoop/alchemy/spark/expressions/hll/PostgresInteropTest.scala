@@ -1,7 +1,8 @@
 package com.swoop.alchemy.spark.expressions.hll
 
-import java.sql.{DriverManager, ResultSet, Statement}
+import com.swoop.alchemy.spark.expressions.hll.Constants.IMPLEMENTATION_CONFIG_KEY
 
+import java.sql.{DriverManager, ResultSet, Statement}
 import com.swoop.alchemy.spark.expressions.hll.functions._
 import com.swoop.test_utils.SparkSessionSpec
 import org.apache.spark.sql.{DataFrame, SparkSession}
@@ -55,7 +56,7 @@ class PostgresInteropTest extends AnyWordSpec with Matchers with SparkSessionSpe
   "Postgres interop" should {
     "calculate same results" in {
       // use Aggregate Knowledge (Postgres-compatible) HLL implementation
-      spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN")
+      spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "AGKN")
 
       // init Postgres extension for database
       pg.update("CREATE EXTENSION IF NOT EXISTS hll;")

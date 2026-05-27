@@ -25,7 +25,8 @@ lazy val alchemy = (project in file("."))
     Compile / resourceDirectory := baseDirectory.value / "alchemy/src/main/resources",
     Test / resourceDirectory := baseDirectory.value / "alchemy/src/test/resources",
     libraryDependencies ++= Seq(
-      "net.agkn" % "hll" % "1.6.0",
+      "net.agkn" % "hll" % "1.6.0" % "provided",
+      "io.github.bareboneslib" % "barebones-hll" % "0.5.0" % "provided",
       "org.apache.spark" %% "spark-sql" % sparkVersion % "provided",
       "org.postgresql" % "postgresql" % "42.2.8" % Test,
       "org.scalatest" %% "scalatest" % "3.2.15" % Test,

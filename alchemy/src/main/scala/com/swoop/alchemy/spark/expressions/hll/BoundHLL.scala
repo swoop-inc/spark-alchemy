@@ -2,6 +2,7 @@ package com.swoop.alchemy.spark.expressions.hll
 
 import org.apache.spark.sql
 import org.apache.spark.sql.Column
+import com.swoop.alchemy.spark.expressions.hll.factory.Implementation
 
 
 /** Convenience trait to use HyperLogLog functions with the same error consistently.

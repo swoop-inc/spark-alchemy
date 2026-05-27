@@ -2,7 +2,9 @@ package com.swoop.alchemy.spark.expressions.hll
 
 import com.swoop.alchemy.spark.expressions.WithHelper
 import com.swoop.alchemy.spark.expressions.hll.HyperLogLogBase.{nameToImpl, resolveImplementation}
-import com.swoop.alchemy.spark.expressions.hll.Implementation.{AGGREGATE_KNOWLEDGE, AGKN, STREAM_LIB, STRM}
+import com.swoop.alchemy.spark.expressions.hll.factory.Implementation.{AGGREGATE_KNOWLEDGE, AGKN, BAREBONES_HLL, STREAM_LIB, STRM}
+import com.swoop.alchemy.spark.expressions.hll.factory.{AgKn, BareBonesHLL, Implementation, StreamLib}
+import com.swoop.alchemy.spark.expressions.hll.implementation.Instance
 import org.apache.spark.sql.EncapsulationViolator.createAnalysisException
 import org.apache.spark.sql.catalyst.InternalRow
 import org.apache.spark.sql.catalyst.analysis.TypeCheckResult
@@ -36,7 +38,7 @@ object HyperLogLogBase {
       impl
     else
       SparkSession.getActiveSession
-        .flatMap(_.conf.getOption(IMPLEMENTATION_CONFIG_KEY))
+        .flatMap(_.conf.getOption(Constants.IMPLEMENTATION_CONFIG_KEY))
         .map(nameToImpl)
         .getOrElse(StreamLib)
 
@@ -55,6 +57,7 @@ object HyperLogLogBase {
     case STREAM_LIB => StreamLib
     case AGKN => AgKn
     case AGGREGATE_KNOWLEDGE => AgKn
+    case BAREBONES_HLL => BareBonesHLL
     case s => throw createAnalysisException(
       s"The HLL implementation choice '$s' is not one of the valid options: ${Implementation.OPTIONS.mkString(", ")}"
     )
@@ -173,7 +176,7 @@ trait NullableSketchAggregation extends TypedImperativeAggregate[Option[Instance
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This function creates a composable "sketch" for each input row.
@@ -221,7 +224,7 @@ case class HyperLogLogInitSimple(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This version combines all input in each aggregate group into a single "sketch".
@@ -275,7 +278,7 @@ case class HyperLogLogInitSimpleAgg(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This version creates a composable "sketch" for each input row.
@@ -324,7 +327,7 @@ case class HyperLogLogInitCollection(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This version combines all input in each aggregate group into a a single "sketch".
@@ -380,7 +383,7 @@ case class HyperLogLogInitCollectionAgg(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This version aggregates the "sketches" into a single merged "sketch" that represents the union of the constituents.
@@ -441,7 +444,7 @@ case class HyperLogLogMerge(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * This version merges multiple "sketches" in one row into a single field.
@@ -507,7 +510,7 @@ case class HyperLogLogRowMerge(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * Returns the estimated cardinality of an HLL "sketch"
@@ -546,7 +549,7 @@ case class HyperLogLogCardinality(
 /**
  * HyperLogLog (HLL) is a state of the art cardinality estimation algorithm with multiple implementations available.
  *
- * The underlying [[Implementation]] can be changed by setting a [[IMPLEMENTATION_CONFIG_KEY configuration value]]
+ * The underlying [[Implementation]] can be changed by setting a [[Constants.IMPLEMENTATION_CONFIG_KEY configuration value]]
  * in the [[SparkSession]] to the implementation name, or passing it as an argument.
  *
  * Computes a merged (unioned) sketch and uses the fact that |A intersect B| = (|A| + |B|) - |A union B| to estimate

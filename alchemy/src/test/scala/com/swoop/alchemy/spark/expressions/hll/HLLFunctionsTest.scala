@@ -1,7 +1,9 @@
 package com.swoop.alchemy.spark.expressions.hll
 
 import com.clearspring.analytics.stream.cardinality.HyperLogLogPlus
-import com.swoop.alchemy.spark.expressions.hll.Implementation.{AGKN, STRM}
+import com.swoop.alchemy.spark.expressions.hll.Constants.IMPLEMENTATION_CONFIG_KEY
+import com.swoop.alchemy.spark.expressions.hll.factory.Implementation.{AGKN, STRM}
+import com.swoop.alchemy.spark.expressions.hll.factory.{AgKn, Implementation, StreamLib}
 import com.swoop.alchemy.spark.expressions.hll.functions.{hll_init_collection, hll_init_collection_agg, _}
 import com.swoop.test_utils.SparkSessionSpec
 import net.agkn.hll.HLL
@@ -37,13 +39,13 @@ class HLLFunctionsTest extends AnyWordSpec with Matchers with SparkSessionSpec {
 
   "HyperLogLog functions" when {
     "config key unset" should {
-      behave like hllImplementation(StreamLib, spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
+      behave like hllImplementation(StreamLib, spark.conf.unset(Constants.IMPLEMENTATION_CONFIG_KEY))
     }
     "config key AGKN" should {
-      behave like hllImplementation(AgKn, spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN"))
+      behave like hllImplementation(AgKn, spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "AGKN"))
     }
     "config key STRM" should {
-      behave like hllImplementation(StreamLib, spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "STRM"))
+      behave like hllImplementation(StreamLib, spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "STRM"))
     }
   }
 
@@ -173,16 +175,16 @@ class HLLFunctionsTest extends AnyWordSpec with Matchers with SparkSessionSpec {
 
   "HyperLogLog aggregate functions" when {
     "config key unset" should {
-      behave like aggregateFunctions(spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
+      behave like aggregateFunctions(spark.conf.unset(Constants.IMPLEMENTATION_CONFIG_KEY))
     }
 
     "config key AGKN" should {
-      behave like aggregateFunctions(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN"))
+      behave like aggregateFunctions(spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "AGKN"))
 
     }
 
     "config key STRM" should {
-      behave like aggregateFunctions(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "STRM"))
+      behave like aggregateFunctions(spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "STRM"))
     }
   }
 
@@ -283,13 +285,13 @@ class HLLFunctionsTest extends AnyWordSpec with Matchers with SparkSessionSpec {
 
   "HyperLogLog intersection function" when {
     "config key unset" should {
-      behave like intersectionFunction(spark.conf.unset(IMPLEMENTATION_CONFIG_KEY))
+      behave like intersectionFunction(spark.conf.unset(Constants.IMPLEMENTATION_CONFIG_KEY))
     }
     "config key AGKN" should {
-      behave like intersectionFunction(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "AGKN"))
+      behave like intersectionFunction(spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "AGKN"))
     }
     "config key STRM" should {
-      behave like intersectionFunction(spark.conf.set(IMPLEMENTATION_CONFIG_KEY, "STRM"))
+      behave like intersectionFunction(spark.conf.set(Constants.IMPLEMENTATION_CONFIG_KEY, "STRM"))
     }
   }
 
