@@ -63,5 +63,5 @@ jobs:
       # "cat /dev/null |" prevents sbt from running in interactive mode. One of many amazing
       # hacks get sbt working in a sane manner.
       - name: sbt test
-        run: cat /dev/null | sbt test
+        run: cat /dev/null | sbt +test
 

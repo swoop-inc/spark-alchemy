@@ -85,7 +85,7 @@ object Implementation {
       def hasNext = i.hasNext
 
       def next = i.next()
-    }.toArray
+    }.toSeq
   }
 }
 
