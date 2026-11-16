@@ -2,7 +2,7 @@ ThisBuild / organization := "com.swoop"
 ThisBuild / version := scala.io.Source.fromFile("VERSION").mkString.stripLineEnd
 
 ThisBuild / scalaVersion := "2.12.15"
-ThisBuild / crossScalaVersions := Seq("2.12.15")
+ThisBuild / crossScalaVersions := Seq("2.12.15", "2.13.16")
 
 ThisBuild / javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
@@ -10,7 +10,7 @@ val sparkVersion = "3.5.2"
 
 lazy val scalaSettings = Seq(
   scalaVersion := "2.12.15",
-  crossScalaVersions := Seq("2.12.15"),
+  crossScalaVersions := Seq("2.12.15", "2.13.16"),
   scalacOptions in(Compile, doc) ++= Seq("-doc-root-content", baseDirectory.value + "/docs/root-doc.txt"),
   scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits"),
   javacOptions in(Compile, doc) ++= Seq("-notimestamp", "-linksource"),
@@ -31,6 +31,21 @@ lazy val alchemy = (project in file("."))
       "org.scalatest" %% "scalatest" % "3.2.15" % Test,
     ),
     Test / fork := true, // required for Spark
+    // Spark 3.5 on Java 9+ needs these module opens; Java 8 does not know the flag
+    Test / javaOptions ++= {
+      if (sys.props("java.specification.version").startsWith("1.")) Seq.empty
+      else Seq(
+        "--add-opens=java.base/java.lang=ALL-UNNAMED",
+        "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED",
+        "--add-opens=java.base/java.nio=ALL-UNNAMED",
+        "--add-opens=java.base/java.util=ALL-UNNAMED",
+        "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED",
+        "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+        "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED",
+        "--add-opens=java.base/sun.security.action=ALL-UNNAMED",
+        "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED"
+      )
+    },
     scalaSettings
   )
   .enablePlugins(SiteScaladocPlugin)
